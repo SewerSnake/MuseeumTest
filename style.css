@@ -5,62 +5,71 @@ body {
   margin: 0px;
 }
 
-.grid {
+.wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  /* height */
-  /* grid-auto-rows: 100px; */
-  /* grid-auto-rows: minmax(100px, auto); */
-  /* justify-items: start; */
-  /* align-items: center; */
 }
 
+/* left */
 #box1 {
-  grid-auto-rows: minmax(100px, auto);
-  /* grid-column: 1/2;
-  grid-row: 1/2; */
-}
-
-#box2 {
-
-}
-
-#box3 {
-
-}
-
-/* .nested {
-  display: grid;
-} */
-
-#showcase {
+  /* impacts box2 height */
   min-height: 400px;
 }
 
-#showcase .bg-image {
+#box1 .bg-image {
   position: absolute;
-  background: #333 url('media/woodrose.jpg');
+  background: lightgrey url('media/woodrose.jpg');
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   height: 400px;
+  /* object-fit: contain; */
+  /* cool */
+  /* height: 100%; */
   z-index: -1;
 }
 
-#h-showcase {
-
-}
-
-#navigation {
-  background-color: lightgrey;
-}
-
-#main {
+/* right */
+#box2 {
   background-color: hotpink;
 }
-/* Wont work */
-/* li {
+
+/* nav */
+#navigation {
+  background-color: lightgrey;
+  padding: 4px;
+}
+#navUl {
   text-decoration: none;
+  list-style-type: none;
+  box-shadow: 10px;
+  /* dels nav ul padding: */
+  /* display: inline-block; */
+}
+#navLi {
+  display: inline;
+  padding: 4px;
+}
+#navLi a{
+  color: black;
+  font-size: 1.4em;
+  padding: 10px;
+  text-decoration: none;
+  display: inline;
+}
+
+/* Notes */
+/* navUL has margin 13px */
+
+
+/* grid-template-rows: 1fr 1fr; */
+/* height */
+/* grid-auto-rows: 100px; */
+/* grid-auto-rows: minmax(100px, auto); */
+/* justify-items: start; */
+/* align-items: center; */
+
+/* .nested {
+  display: grid;
 } */
