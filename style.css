@@ -1,0 +1,66 @@
+/* Core styles */
+
+body {
+  font-family: monospace;
+  margin: 0px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* height */
+  /* grid-auto-rows: 100px; */
+  /* grid-auto-rows: minmax(100px, auto); */
+  /* justify-items: start; */
+  /* align-items: center; */
+}
+
+#box1 {
+  grid-auto-rows: minmax(100px, auto);
+  /* grid-column: 1/2;
+  grid-row: 1/2; */
+}
+
+#box2 {
+
+}
+
+#box3 {
+
+}
+
+/* .nested {
+  display: grid;
+} */
+
+#showcase {
+  min-height: 400px;
+}
+
+#showcase .bg-image {
+  position: absolute;
+  background: #333 url('media/woodrose.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+  z-index: -1;
+}
+
+#h-showcase {
+
+}
+
+#navigation {
+  background-color: lightgrey;
+}
+
+#main {
+  background-color: hotpink;
+}
+/* Wont work */
+/* li {
+  text-decoration: none;
+} */
