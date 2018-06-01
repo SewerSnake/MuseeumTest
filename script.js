@@ -20,13 +20,16 @@ function getArtist(artistName) {
       return response.json();
     })
     .then(function(result) {
-      //console.log(result);
+      console.log(result);
+      var gallery = document.getElementById("artGallery");
 
       var artObjects = result.artObjects;
 
-      var id = artObjects[0].objectNumber;
+      for (var i = 0; i < artObjects.length; i++) {
+        gallery.appendChild(document.createElement('p', artObjects[i].title));
+      }
 
-      getPiece(id)
+      //getPiece(id)
 
     });
 }

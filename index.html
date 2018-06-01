@@ -92,18 +92,14 @@
         render() {
           var artistName = this.props.match.params.artistName;
 
-          var info = getArtist(artistName);
+          getArtist(artistName);
 
-          return <div>{artistName}</div>
-          /*return <div>
-+            <p>{title}</p>
-+            <p>{locationOfPiece}</p>
-+            <p>{plaqueDescription}</p>
-+          </div>;
-+
-+          return <div>THE ARTIST</div>; */
+          return <div id="artGallery"></div>
+
         }
       }
+
+      // Petteri
       class Art extends React.Component {
         render() {
 
@@ -133,15 +129,12 @@
         render() {
             return <section id="section-a">
                       <div className="content-wrap">
-                        <h2 className="content-title">An itroduction to fine art</h2>
+                        <h2 className="content-title">An introduction to fine art</h2>
                         <p>Lorem ipsumfff!</p>
                       </div>
                     </section>
               }
       }
-
-      // var destination3 = document.querySelector(".content-wrap");
-      // ReactDOM.render(<ArtistInfo artistName="vermeer"></ArtistInfo>, destination3);
 
       var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 
