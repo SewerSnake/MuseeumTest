@@ -10,7 +10,7 @@
     <script src="react-dom.development.js"></script>
     <script src="react-router-dom.js"></script>
     <script src="babel.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" type="text/jsx"></script>
   </head>
 
   <body>
@@ -83,16 +83,12 @@
 
           getArtist(artistName);
 
-          return <div>{artistName}</div>
-          /*return <div>
-+            <p>{title}</p>
-+            <p>{locationOfPiece}</p>
-+            <p>{plaqueDescription}</p>
-+          </div>;
-+
-+          return <div>THE ARTIST</div>; */
+          return <div id="artGallery"></div>
+
         }
       }
+
+      // Petteri
       class Art extends React.Component {
         render() {
 
@@ -122,15 +118,17 @@
         render() {
             return <section id="section-a">
                       <div className="content-wrap">
+<<<<<<< HEAD
                         <h2 className="content-title">...</h2>
                         <p>...</p>
+=======
+                        <h2 className="content-title">An introduction to fine art</h2>
+                        <p>Lorem ipsumfff!</p>
+>>>>>>> 7ae89ab2354df3fc09b006a5de5fc94a45f49813
                       </div>
                     </section>
               }
       }
-
-      // var destination3 = document.querySelector(".content-wrap");
-      // ReactDOM.render(<ArtistInfo artistName="vermeer"></ArtistInfo>, destination3);
 
       var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 

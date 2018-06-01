@@ -20,18 +20,17 @@ function getArtist(artistName) {
       return response.json();
     })
     .then(function(result) {
-      //console.log(result);
+      console.log(result);
+      var gallery = document.getElementById("artGallery");
 
       var artObjects = result.artObjects;
 
-      var id = artObjects[0].objectNumber;
-
-      getPiece(id)
-      /*
       for (var i = 0; i < artObjects.length; i++) {
-        console.log(artObjects[i].title);
+        gallery.appendChild(document.createElement('p', artObjects[i].title));
       }
-      */
+
+      //getPiece(id)
+
     });
 }
 
@@ -51,5 +50,6 @@ function getPiece(id) {
       plaqueDescription = artObject.plaqueDescriptionEnglish;
       //HDImage = artObject.
       console.log(title,locationOfPiece,plaqueDescription);
+
     });
 }
