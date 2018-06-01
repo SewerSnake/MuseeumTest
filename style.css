@@ -49,7 +49,7 @@ body {
 /* nav */
 #navigation {
   background-color: #f5ab31;
-  padding: 4px;
+  padding: 4px 4px 4px 8px;
 }
 #navUl {
   text-decoration: none;
@@ -60,12 +60,12 @@ body {
 }
 #navLi {
   display: inline;
-  padding: 4px;
+  padding: 4px 8px 4px 0px;
 }
 #navLi a{
   color: black;
   font-size: 1.4em;
-  padding: 10px;
+  padding: 10px 10px 10px 0px;
   text-decoration: none;
   display: inline;
 }
@@ -108,17 +108,19 @@ body {
   vertical-align: sub;
 }
 
+/* ART page */
+#artList {
+  padding: 0px 0px 0px 50px
+}
+
 /* Notes */
 /* navUL has margin 13px */
-
-
 /* grid-template-rows: 1fr 1fr; */
 /* height */
 /* grid-auto-rows: 100px; */
 /* grid-auto-rows: minmax(100px, auto); */
 /* justify-items: start; */
 /* align-items: center; */
-
 /* .nested {
   display: grid;
 } */
