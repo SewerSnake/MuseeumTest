@@ -6,7 +6,7 @@ body {
 }
 
 .wrapper {
-  height: 400px;
+  height: 700px;
 }
 
 @media (min-width: 500px) {
@@ -20,7 +20,7 @@ body {
   }
 }
 
-/* left */
+/* Box left */
 #box1 {
   position: relative;
   /* impacts box2 height */
@@ -29,7 +29,7 @@ body {
 
 #box1 .bg-image {
   position: absolute;
-  background: lightgrey url('media/woodrose.jpg');
+  background: lightgrey url('media/parrot.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -41,14 +41,14 @@ body {
   z-index: -1;
 }
 
-/* right */
+/* Box right */
 #box2 {
-  background-color: hotpink;
+  background-color: white;
 }
 
 /* nav */
 #navigation {
-  background-color: lightgrey;
+  background-color: #f5ab31;
   padding: 4px;
 }
 #navUl {
@@ -68,6 +68,44 @@ body {
   padding: 10px;
   text-decoration: none;
   display: inline;
+}
+
+
+/* Logo */
+.logo {
+  padding: 14px 0px 0px 50px;
+  /* background-color: #FFF; */
+}
+.logoS {
+  padding-left: 50px;
+  /* background-color: #FFF; */
+}
+#logoletter {
+  padding: 4px;
+  margin: 4px;
+  background-color: #f5ab31;
+  color: white;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 36px;
+  text-align: center;
+  box-shadow: 5px 5px grey;
+}
+#logoletter:nth-child(even) {
+  background-color: #c5b2e0;
+}
+#logoletter2 {
+  padding: 2px;
+  margin: 2px;
+  display: inline-block;
+  background-color: #464646;
+  color: #f5ab31;
+  width: 30px;
+  font-family: monospace;
+  font-size: 14px;
+  text-align: center;
+  box-shadow: 3px 3px grey;
+  vertical-align: sub;
 }
 
 /* Notes */

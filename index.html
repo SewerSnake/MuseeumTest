@@ -20,8 +20,10 @@
       <!-- Header / box1 -->
       <header id="box1">
         <div class="bg-image"></div>
-        <h1 id="h-box1">Welcome to Rijksmuseum</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+        <div class="logo"></div>
+        <div class="logoS"></div>
+        <!-- <h1 id="h-box1">Welcome to Rijksmuseum</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur.</p> -->
       </header>
 
 
@@ -31,8 +33,8 @@
         <nav id="navigation"></nav>
         <section id="section-a">
           <div class="content-wrap">
-            <h2 class="content-title">An itroduction to fine art</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nostrum!</p>
+            <!-- <h2 class="content-title">An itroduction to fine art</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, nostrum!</p> -->
           </div>
         </section>
       </main>
@@ -41,6 +43,50 @@
 
 
     <script type="text/jsx">
+      var destination = document.querySelector(".logo");
+      var destination2 = document.querySelector(".logoS");
+
+      class LogoLetter extends React.Component {
+        render() {
+          return(
+            <div id="logoletter">
+              {this.props.children}
+            </div>
+          );
+        }
+      }
+      class LogoLetter2 extends React.Component {
+        render() {
+          return(
+            <div id="logoletter2">
+        {this.props.children}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <LogoLetter>M</LogoLetter>
+          <LogoLetter>U</LogoLetter>
+          <LogoLetter>S</LogoLetter>
+          <LogoLetter>E</LogoLetter>
+          <LogoLetter>U</LogoLetter>
+          <LogoLetter>M</LogoLetter>
+        </div>,
+        destination
+      );
+      ReactDOM.render(
+        <div>
+          <LogoLetter2>A</LogoLetter2>
+          <LogoLetter2>P</LogoLetter2>
+          <LogoLetter2>P</LogoLetter2>
+        </div>,
+        destination2
+      );
+
+
+
       var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 
       <HashRouter>
