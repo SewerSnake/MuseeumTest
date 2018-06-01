@@ -30,7 +30,7 @@
       <!-- Main / box2-->
       <main id="box2">
         <!-- Navigation -->
-        <nav id="navigation"></nav>
+
         <section id="section-a">
           <div class="content-wrap">
             <!-- <h2 class="content-title">An itroduction to fine art</h2>
@@ -90,28 +90,64 @@
       // Eric
       class ArtistInfo extends React.Component {
         render() {
-          var artistName = this.props.artistName;
+          var artistName = this.props.match.params.artistName;
 
           getArtist(artistName);
 
+          return <div>{artistName}</div>
           /*return <div>
-            <p>{title}</p>
-            <p>{locationOfPiece}</p>
-            <p>{plaqueDescription}</p>
-          </div>;*/
++            <p>{title}</p>
++            <p>{locationOfPiece}</p>
++            <p>{plaqueDescription}</p>
++          </div>;
++
++          return <div>THE ARTIST</div>; */
+        }
+      }
+      class Art extends React.Component {
+        render() {
+          
+            var artists = [['rembrandt','Rembrandt'],['monet','Claude Monet'],
+            ['picasso','Pablo Picasso'],['edgardegas','Edgar Degas'],
+            ['vermeer','Johannes Vermeer'],['vangogh','Vincent van Gogh'],
+            ['michelangelo','Michelangelo'],['davinci','Lenardo da Vinci']]
 
-          return <div>THE ARTIST</div>;
+          var renderValues = artists.map(function (value) {
+            var x = "Painters/"+value[0] + ".jpeg";
+            var y = "art/"+value[0];
+            return <Link to={y}> <img src={x} /></Link>
+
+          })
+          // <p className="artistName">{value[1]}</p>
+
+
+            return <section id="artList" >
+            <h1>Artists</h1>
+            <div>{renderValues}</div>
+
+            </section>
         }
       }
 
-      var destination3 = document.querySelector(".content-wrap");
-      ReactDOM.render(<ArtistInfo artistName="vermeer"></ArtistInfo>, destination3);
+      class Home extends React.Component {
+        render() {
+            return <section id="section-a">
+                      <div className="content-wrap">
+                        <h2 className="content-title">An itroduction to fine art</h2>
+                        <p>Lorem ipsumfff!</p>
+                      </div>
+                    </section>
+              }
+      }
+
+      // var destination3 = document.querySelector(".content-wrap");
+      // ReactDOM.render(<ArtistInfo artistName="vermeer"></ArtistInfo>, destination3);
 
       var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 
       <HashRouter>
         <div>
-          <nav>
+          <nav id="navigation">
             <ul id="navUl">
               <li id="navLi">
                 <Link to="/home">Home</Link>
@@ -127,12 +163,13 @@
               </li>
             </ul>
           </nav>
-          <Route path="/home" />
-          <Route path="/art" />
+          <Route component={Home} path="/home" />
+          <Route exact="true" component={Art} path="/art" />
+          <Route component={ArtistInfo} path="/art/:artistName" />
           <Route path="/planner" />
           <Route path="/cafe" />
         </div>
-      </HashRouter>, document.getElementById('navigation'));
+      </HashRouter>, document.getElementById('box2'));
 
 
     </script>
