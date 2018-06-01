@@ -43,6 +43,8 @@
 
 
     <script type="text/jsx">
+      // Patrik
+
       var destination = document.querySelector(".logo");
       var destination2 = document.querySelector(".logoS");
 
@@ -85,7 +87,19 @@
         destination2
       );
 
+      // Eric
+      class ArtistInfo extends React.Component {
+        render() {
+          var artistName = this.props.artistName;
 
+          getArtist(artistName);
+
+          return <div>TEST!!!</div>;
+        }
+      }
+
+      var destination3 = document.querySelector(".content-wrap");
+      ReactDOM.render(<ArtistInfo artistName="vermeer"></ArtistInfo>, destination3);
 
       var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 
