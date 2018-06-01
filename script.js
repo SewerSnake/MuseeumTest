@@ -27,11 +27,7 @@ function getArtist(artistName) {
       var id = artObjects[0].objectNumber;
 
       getPiece(id)
-      /*
-      for (var i = 0; i < artObjects.length; i++) {
-        console.log(artObjects[i].title);
-      }
-      */
+
     });
 }
 
@@ -51,5 +47,6 @@ function getPiece(id) {
       plaqueDescription = artObject.plaqueDescriptionEnglish;
       //HDImage = artObject.
       console.log(title,locationOfPiece,plaqueDescription);
+
     });
 }

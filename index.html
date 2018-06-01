@@ -10,7 +10,7 @@
     <script src="react-dom.development.js"></script>
     <script src="react-router-dom.js"></script>
     <script src="babel.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" type="text/jsx"></script>
   </head>
 
   <body>
@@ -92,15 +92,19 @@
         render() {
           var artistName = this.props.artistName;
 
-          getArtist(artistName);
+          var info = getArtist(artistName);
 
-          /*return <div>
-            <p>{title}</p>
-            <p>{locationOfPiece}</p>
-            <p>{plaqueDescription}</p>
-          </div>;*/
+          return <ArtPiece title={info[0]} locationOfPiece={info[1]} plaqueDescription={info[2]}></ArtPiece>;
+        }
+      }
 
-          return <div>THE ARTIST</div>;
+      class ArtPiece extends React.Component {
+        render() {
+          return <div>
+            <p>{this.props.title}</p>
+            <p>{this.props.locationOfPiece}</p>
+            <p>{this.props.plaqueDescription}</p>
+          </div>;
         }
       }
 
