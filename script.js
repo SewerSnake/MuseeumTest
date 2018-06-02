@@ -13,9 +13,11 @@ var plaqueDescription;
 
 var HDImage;
 
-function getArtist(artistName) {
+function getArtist(artistName, resultsPerPage) {
 
-  fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q=" + artistName + "&s=relevance")
+  fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
+  + artistName + "&s=relevance" + "&ps=" + resultsPerPage)
+  
     .then(function(response) {
       return response.json();
     })
@@ -29,13 +31,15 @@ function getArtist(artistName) {
         gallery.appendChild(document.createElement('p', artObjects[i].title));
       }
 
-      //getPiece(id)
+      //getPiece(id, 10)
 
     });
 }
 
-function getPiece(id) {
-  fetch("https://www.rijksmuseum.nl/api/EN/collection/" + id + "?key=OTlO83oj&format=json")
+function getPiece(id, resultsPerPage) {
+  fetch("https://www.rijksmuseum.nl/api/EN/collection/"
+  + id + "?key=OTlO83oj&format=json" + "&ps=" + resultsPerPage)
+
     .then(function(response) {
       return response.json();
     })

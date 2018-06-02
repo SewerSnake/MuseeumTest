@@ -81,7 +81,7 @@
         render() {
           var artistName = this.props.match.params.artistName;
 
-          getArtist(artistName);
+          getArtist(artistName, 10);
 
           return <div id="artGallery"></div>
 
