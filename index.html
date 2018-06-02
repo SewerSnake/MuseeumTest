@@ -132,7 +132,7 @@
           <nav id="navigation">
             <ul id="navUl">
               <li id="navLi">
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li id="navLi">
                 <Link to="/art">Art</Link>
@@ -145,7 +145,7 @@
               </li>
             </ul>
           </nav>
-          <Route component={Home} path="/home" />
+          <Route exact="true" component={Home} path="/" />
           <Route exact="true" component={Art} path="/art" />
           <Route component={ArtistInfo} path="/art/:artistName" />
           <Route path="/planner" />
