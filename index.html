@@ -117,27 +117,25 @@
       }
 
       //Milja
-      var today = moment().format('YYYY-MM-DD');
-      console.log(today);
       var PLANNER_API_KEY = 'hXNnSkBw';
 
       class Planner extends React.Component {
         constructor(props){
           super(props);
           this.state = {
-            today: props.today,
-            calendarDate: props.today,
+            today: moment(new Date()).format('YYYY-MM-DD'),
+            calendarDate: moment(new Date()).format('YYYY-MM-DD'),
             time: 0,
             events: [],
             allEvents: []
           };
           this.onChange = this.onChange.bind(this);
-          // this.render = this.render.bind(this);
+          this.componentDidMount = this.componentDidMount.bind(this);
         }
         componentDidMount(){
           console.log('mounted');
-          var chosenDate = this.props.today;
-          this.setState({ calendarDate: this.props.today });
+          var chosenDate = this.state.today;
+          // this.setState({ calendarDate: this.props.today });
           // console.log('caldate '+ this.state.calendarDate);
           // var EVENT_API = 'https://www.rijksmuseum.nl/api/en/agenda/2018-06-02?key='+KEY+'&format=json';
           var EVENT_API = 'https://www.rijksmuseum.nl/api/en/agenda/'+chosenDate+'?key='+PLANNER_API_KEY+'&format=json';
@@ -199,7 +197,7 @@
           });
 
           return <div>
-          <form><input type="date" min={this.props.today} onChange={this.onChange}/></form>
+          <form><input type="date" min={this.state.today} onChange={this.onChange}/></form>
           <br />
           <table style={border}>
           <tbody>
@@ -250,7 +248,7 @@
           <Route exact={true} component={Home} path="/"   />
           <Route exact={true} component={Art} path="/art"   />
           <Route component={ArtistInfo} path="/art/:artistName" />
-          <Route exact="true" component={Planner} path="/planner" />
+          <Route exact="true" component={Planner} today={moment().format('YYYY-MM-DD')} path="/planner" />
           <Route path="/cafe" />
         </div>
       </HashRouter>, document.getElementById('box2'));
