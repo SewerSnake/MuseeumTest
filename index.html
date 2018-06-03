@@ -100,7 +100,7 @@
           var renderValues = artists.map(function (value) {
             var x = "Painters/"+value[0] + ".jpeg";
             var y = "art/"+value[0];
-            return <Link to={y}> <img src={x} /></Link>
+            return <Link to={y} key={value[0]}> <img src={x} /></Link>
 
           })
           // <p className="artistName">{value[1]}</p>
