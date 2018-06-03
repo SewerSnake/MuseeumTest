@@ -108,6 +108,11 @@ body {
   vertical-align: sub;
 }
 
+/* Home aka index page */
+#section-a {
+  padding: 0px 0px 0px 50px
+}
+
 /* ART page */
 #artList {
   padding: 0px 0px 0px 50px
