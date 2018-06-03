@@ -118,18 +118,15 @@
         render() {
           if (!this.state.artArray) {
             return <p>Loading...</p>
-          } else if (this.state.requestFailed) {
+          } else if (this.state.requestFailed || this.state.artArray.length == 0) {
             return <p>Could not find what you seek</p>
           } else {
-            /*var gallery = <div></div>
-            for (var i = 0; i < this.state.artArray.length; i++) {
 
-              if (this.state.artArray[i].title) {
-                gallery.appendChild(<p>{this.state.artArray[i].title}</p>);
-              }
-            }*/
-
-            return <div>{this.props.match.params.artistName}</div>;
+            return <div>{
+              this.state.artArray.map(function(value) {
+                return <p>{value.title}</p>
+              })
+            }</div>
           }
         }
       }
