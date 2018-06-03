@@ -121,15 +121,15 @@
           } else if (this.state.requestFailed) {
             return <p>Could not find what you seek</p>
           } else {
-            var gallery = <div></div>
+            /*var gallery = <div></div>
             for (var i = 0; i < this.state.artArray.length; i++) {
 
               if (this.state.artArray[i].title) {
                 gallery.appendChild(<p>{this.state.artArray[i].title}</p>);
               }
-            }
+            }*/
 
-            return gallery;
+            return <div>{this.props.match.params.artistName}</div>;
           }
         }
       }
@@ -291,7 +291,7 @@
           </nav>
           <Route exact={true} component={Home} path="/"   />
           <Route exact={true} component={Art} path="/art"   />
-          <Route component={ArtistInfo} path="/art/:artistName" />
+          <Route component={ArtGallery} path="/art/:artistName" />
           <Route exact="true" component={Planner} today={moment().format('YYYY-MM-DD')} path="/planner" />
           <Route path="/cafe" />
         </div>
