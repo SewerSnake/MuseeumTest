@@ -113,6 +113,14 @@ body {
   padding: 0px 0px 0px 50px
 }
 
+#painting {
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ width: 100px;
+ height: 100px;
+}
+
 /* Notes */
 /* navUL has margin 13px */
 /* grid-template-rows: 1fr 1fr; */

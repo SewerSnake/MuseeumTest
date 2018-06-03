@@ -124,14 +124,26 @@
 
             return <div>{
               this.state.artArray.map(function(value) {
-                return <Painting id={value.objectNumber}></Painting>
+                return <div>
+                  {createImage(value.webImage)}
+                  <PaintingInfo id={value.objectNumber}></PaintingInfo>
+                </div>
               })
             }</div>
           }
         }
       }
 
-      class Painting extends React.Component {
+      function createImage(webImage) {
+
+        if (webImage != null) {
+          return <div id="painting" style={{backgroundImage: "url(" + webImage.url.replace("s0", "s128") + ")"}}></div>
+        } else {
+          return <p>No image available</p>
+        }
+      }
+
+      class PaintingInfo extends React.Component {
         constructor(props) {
           super(props);
           this.state = {
@@ -160,14 +172,6 @@
                 locationOfPiece: artObject.location,
                 plaqueDescription: artObject.plaqueDescriptionEnglish
               });
-
-              /*title = artObject.longTitle;
-
-              locationOfPiece = artObject.location;
-
-              plaqueDescription = artObject.plaqueDescriptionEnglish;*/
-              //HDImage = artObject.
-
             }.bind(this), () => {
               this.setState(requestFailed: true);
             });
