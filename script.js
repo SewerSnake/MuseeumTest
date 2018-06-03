@@ -5,6 +5,8 @@ var collectionDetails = "https://www.rijksmuseum.nl/api/EN/collection/SK-A-2344?
 
 var testCalender = "https://www.rijksmuseum.nl/api/nl/agenda/2018-05-28/expostition/0ee170d3-9604-48ac-b15f-014d911bf065/availability/e2b108b3-52b0-4a89-ac64-19514f8c5434?key=OTlO83oj&format=json";
 
+var artArray = [];
+
 var title;
 
 var locationOfPiece;
@@ -17,22 +19,20 @@ function getArtist(artistName, resultsPerPage) {
 
   fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
   + artistName + "&s=relevance" + "&ps=" + resultsPerPage)
-  
+
     .then(function(response) {
       return response.json();
     })
     .then(function(result) {
       console.log(result);
-      var gallery = document.getElementById("artGallery");
 
       var artObjects = result.artObjects;
 
       for (var i = 0; i < artObjects.length; i++) {
-        gallery.appendChild(document.createElement('p', artObjects[i].title));
+        artArray.push(artObjects[i]);
       }
 
-      //getPiece(id, 10)
-
+      return artArray;
     });
 }
 

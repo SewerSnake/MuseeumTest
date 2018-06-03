@@ -77,14 +77,58 @@
       );
 
       // Eric
-      class ArtistInfo extends React.Component {
-        render() {
+      class ArtGallery extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            requestFailed: false
+          };
+        }
+
+        componentDidMount() {
           var artistName = this.props.match.params.artistName;
+          var artArr = [];
 
-          getArtist(artistName, 10);
+          fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
+          + artistName + "&s=relevance" + "&ps=" + 10)
 
-          return <div id="artGallery"></div>
+            .then(function(response) {
+              if (!response.ok) {
+                throw Error('Network request failed');
+              }
+              return response.json();
+            })
+            .then(function(result) {
+              console.log(result);
 
+              var artObjects = result.artObjects;
+
+              for (var i = 0; i < artObjects.length; i++) {
+                artArr.push(artObjects[i]);
+              }
+
+              this.setState({artArray: artArr});
+            }.bind(this), () => {
+              this.setState(requestFailed: true);
+            });
+        }
+
+        render() {
+          if (!this.state.artArray) {
+            return <p>Loading...</p>
+          } else if (this.state.requestFailed) {
+            return <p>Could not find what you seek</p>
+          } else {
+            var gallery = <div></div>
+            for (var i = 0; i < this.state.artArray.length; i++) {
+
+              if (this.state.artArray[i].title) {
+                gallery.appendChild(<p>{this.state.artArray[i].title}</p>);
+              }
+            }
+
+            return gallery;
+          }
         }
       }
 
@@ -147,7 +191,7 @@
           </nav>
           <Route component={Home} path="/home" />
           <Route exact="true" component={Art} path="/art" />
-          <Route component={ArtistInfo} path="/art/:artistName" />
+          <Route component={ArtGallery} path="/art/:artistName" />
           <Route path="/planner" />
           <Route path="/cafe" />
         </div>
