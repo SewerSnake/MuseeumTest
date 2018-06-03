@@ -92,7 +92,7 @@
           var artArr = [];
 
           fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
-          + artistName + "&s=relevance" + "&ps=" + 10)
+          + artistName + "&s=relevance" + "&ps=" + 5)
 
             .then(function(response) {
               if (!response.ok) {
@@ -101,7 +101,7 @@
               return response.json();
             })
             .then(function(result) {
-              console.log(result);
+              //console.log(result);
 
               var artObjects = result.artObjects;
 
@@ -124,9 +124,72 @@
 
             return <div>{
               this.state.artArray.map(function(value) {
-                return <p>{value.title}</p>
+                return <Painting id={value.objectNumber}></Painting>
               })
             }</div>
+          }
+        }
+      }
+
+      class Painting extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            requestFailed: false
+          };
+        }
+
+        componentDidMount() {
+
+          fetch("https://www.rijksmuseum.nl/api/EN/collection/"
+          + this.props.id + "?key=OTlO83oj&format=json" + "&ps=" + 5)
+
+            .then(function(response) {
+              if (!response.ok) {
+                throw Error('Network request failed');
+              }
+              return response.json();
+            })
+            .then(function(result) {
+              //console.log(result);
+              var artObject = result.artObject;
+
+              this.setState({
+                title: artObject.longTitle,
+                maker: artObject.principalMaker,
+                locationOfPiece: artObject.location,
+                plaqueDescription: artObject.plaqueDescriptionEnglish
+              });
+
+              /*title = artObject.longTitle;
+
+              locationOfPiece = artObject.location;
+
+              plaqueDescription = artObject.plaqueDescriptionEnglish;*/
+              //HDImage = artObject.
+
+            }.bind(this), () => {
+              this.setState(requestFailed: true);
+            });
+        }
+
+        render() {
+          if (this.state.requestFailed) {
+            return <p>Failed to get painting</p>
+          } else {
+            var title = this.state.title;
+            var maker = this.state.maker;
+            var location = this.state.locationOfPiece;
+            var description = this.state.plaqueDescription;
+            return <p>
+              {'Title: ' + (title ? title:'Unavailable')}
+              <br/>
+              {'Maker: ' + (maker ? maker:'Unavailable')}
+              <br/>
+              {'Where to find: ' + (location ? location:'Unavailable')}
+              <br/>
+              {'Description: ' + (description ? description:'Unavailable')}
+            </p>
           }
         }
       }

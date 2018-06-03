@@ -7,12 +7,6 @@ var testCalender = "https://www.rijksmuseum.nl/api/nl/agenda/2018-05-28/expostit
 
 var artArray = [];
 
-var title;
-
-var locationOfPiece;
-
-var plaqueDescription;
-
 var HDImage;
 
 function getArtist(artistName, resultsPerPage) {
