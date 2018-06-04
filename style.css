@@ -1,12 +1,15 @@
 /* Core styles */
 
+html, body { height: 100%; }
+
 body {
   font-family: monospace;
   margin: 0px;
 }
 
 .wrapper {
-  height: 700px;
+  height: 100%;
+  min-height: 300px;
 }
 
 @media (min-width: 500px) {
@@ -44,6 +47,7 @@ body {
 /* Box right */
 #box2 {
   background-color: white;
+  overflow-y: scroll;
 }
 
 /* nav */
@@ -110,16 +114,18 @@ body {
 
 /* Home aka index page */
 #section-a {
-  padding: 0px 0px 0px 50px
+  padding: 0px 0px 0px 50px;
 }
 
-/* ART page */
+/* ART pages */
 #artList {
-  padding: 0px 0px 0px 50px
+  padding: 0px 0px 0px 50px;
 }
 
 #artistArtGallery {
-  padding: 0px 0px 0px 50px
+  /* height: 200px; */
+  padding: 0px 0px 0px 50px;
+  /* overflow-y: scroll; */
 }
 
 #painting {

@@ -35,7 +35,7 @@
 
 
     <script type="text/jsx">
-    // Kommer att lösas med webpack 
+    // Kommer att lösas med webpack
     // var moment = require('moment');
 
       var destination = document.querySelector(".logo");
@@ -203,9 +203,9 @@
             return <p>Could not find what you seek</p>
           } else {
 
-            return <div>{
+            return <div id="artistArtGallery">{
               this.state.artArray.map(function(value) {
-                return <div id="artistArtGallery">
+                return <div>
                   {createImage(value.webImage)}
                   <PaintingInfo id={value.objectNumber}></PaintingInfo>
                 </div>
@@ -219,7 +219,7 @@
 
         if (webImage != null) {
           var image = "url(" + webImage.url.replace("s0", "s128") + ")";
-          
+
           return <div id="painting" style={{backgroundImage: image}}
           onClick={function functionName(event) {
             var parrotBox = document.querySelector('#box1 > .bg-image');
