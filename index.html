@@ -431,6 +431,58 @@
 
 
       //CAFE
+
+      // Menu Card component
+      class MenuSquare extends React.Component {
+        render() {
+          var squareStyle = {
+            height: 120,
+            backgroundColor: this.props.color,
+            backgroundImage: "url("+this.props.image+")",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+          };
+          return (
+            <div style={squareStyle}></div>
+          );
+        }
+      }
+      class MenuLabel extends React.Component {
+        render() {
+          var labelStyle = {
+
+            fontWeight: "bold",
+            backgroundColor: this.props.colorL,
+            padding: 13,
+            height: 30,
+            margin: 0
+          };
+          return (
+            <p style={labelStyle}>{this.props.name}</p>
+          );
+        }
+      }
+      class MenuCard extends React.Component {
+        render() {
+          var cardStyle = {
+            display: "inline-block",
+            height: 150,
+            width: 120,
+            padding: 0,
+            margin: 10,
+            backgroundColor:"FFF",
+            boxShadow: "0px 5px 1px #DCDCDC"
+          };
+          return (
+            <div style={cardStyle}>
+              <Square color={this.props.color} image={this.props.image}/>
+              <Label colorL={this.props.colorL} name={this.props.name}/>
+            </div>
+          );
+        }
+      }
+
       var MENU_ID = 111;
       var cafeMenu =
       [
@@ -484,6 +536,7 @@
         }
       ];
 
+      //POST request + create menu items
       function postMenu(){
         fetch('http://cities.jonkri.se/', {
           body: JSON.stringify({cafeMenu, id: MENU_ID}),
@@ -494,8 +547,18 @@
         }).then(response => response.json())
           .then(result => {
             console.log(result);
+/*
+            var renderCards = cafeMenu.map(function (value, index) {
+              var img = value.name;
+              return <MenuCard id={index} color="lightgrey" colorL="#FFC983" name={value.name} image={img}/>
+            })
+            ReactDOM.render(<section id="cafeMenu">
+              <h1>MENU</h1>
+              <div>{renderCards}</div>
+            </section>, document.getElementById('box2'));
+*/
           });
-      }
+      };
 
       function updateOrder(){
         fetch('http://cities.jonkri.se/'+MENU_ID, {
