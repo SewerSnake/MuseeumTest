@@ -118,6 +118,10 @@ body {
   padding: 0px 0px 0px 50px
 }
 
+#artistArtGallery {
+  padding: 0px 0px 0px 50px
+}
+
 #painting {
  background-position: center;
  background-size: cover;
