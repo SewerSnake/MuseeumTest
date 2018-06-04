@@ -202,7 +202,7 @@
 
             return <div>{
               this.state.artArray.map(function(value) {
-                return <div>
+                return <div id="artistArtGallery">
                   {createImage(value.webImage)}
                   <PaintingInfo id={value.objectNumber}></PaintingInfo>
                 </div>
@@ -215,7 +215,13 @@
       function createImage(webImage) {
 
         if (webImage != null) {
-          return <div id="painting" style={{backgroundImage: "url(" + webImage.url.replace("s0", "s128") + ")"}}></div>
+          var image = "url(" + webImage.url.replace("s0", "s128") + ")";
+          
+          return <div id="painting" style={{backgroundImage: image}}
+          onClick={function functionName(event) {
+            var parrotBox = document.querySelector('#box1 > .bg-image');
+            parrotBox.style.backgroundImage = image;
+          }}></div>
         } else {
           return <p>No image available</p>
         }
