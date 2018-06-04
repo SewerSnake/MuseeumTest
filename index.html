@@ -122,6 +122,7 @@
           fontWeight: "bold",
           backgroundColor: this.props.colorL,
           padding: 13,
+          height: 30,
           margin: 0
         };
         return (
@@ -204,7 +205,7 @@
 
             return <div>{
               this.state.artArray.map(function(value) {
-                return <div>
+                return <div id="artistArtGallery">
                   {createImage(value.webImage)}
                   <PaintingInfo id={value.objectNumber}></PaintingInfo>
                 </div>
@@ -217,7 +218,13 @@
       function createImage(webImage) {
 
         if (webImage != null) {
-          return <div id="painting" style={{backgroundImage: "url(" + webImage.url.replace("s0", "s128") + ")"}}></div>
+          var image = "url(" + webImage.url.replace("s0", "s128") + ")";
+          
+          return <div id="painting" style={{backgroundImage: image}}
+          onClick={function functionName(event) {
+            var parrotBox = document.querySelector('#box1 > .bg-image');
+            parrotBox.style.backgroundImage = image;
+          }}></div>
         } else {
           return <p>No image available</p>
         }
@@ -285,34 +292,14 @@
             var artists = [['rembrandt','Rembrandt'],['monet','Claude Monet'],
             ['picasso','Pablo Picasso'],['edgardegas','Edgar Degas'],
             ['vermeer','Johannes Vermeer'],['vangogh','Vincent van Gogh'],
-            ['michelangelo','Michelangelo'],['davinci','Lenardo da Vinci']]
+            ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci']]
 
-            var cardStyle = {
-              display: "inline-block",
-              height: 188,
-              width: 150,
-              padding: 0,
-              margin: 10,
-              backgroundColor:"FFF",
-              boxShadow: "0px 5px 1px #DCDCDC"
-            };
 
           var renderValues = artists.map(function (value) {
-            var x = "Painters/"+value[0] + ".jpeg";
-            var y = "art/"+value[0];
-            return <div key={value[0]} style={cardStyle}>
-              <Link to={y} ><Square  image={x}/> </Link>
-              <Label  name={value[1]}/>
-            </div>
-
-          //  return <Link to={y} key={value[0]}> <img src={x} /></Link>
-
+            var img = "Painters/"+value[0] + ".jpeg";
+            var routeValue = "art/"+value[0];
+            return <Link to={routeValue} key={value[0]} ><Card color="lightgrey" colorL="#FFC983" name={value[1]} image={img}/></Link>
           })
-          // <p className="artistName">{value[1]}</p>
-          // <div  style={cardStyle}>
-          //   <Square color={this.props.color} image={this.props.image}/>
-          //   <Label colorL={this.props.colorL} name={this.props.name}/>
-          // </div>
 
             return <section id="artList" >
             <h1>Artists</h1>
