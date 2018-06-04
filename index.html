@@ -431,33 +431,84 @@
 
 
       //CAFE
+      var MENU_ID = 111;
       var cafeMenu =
       [
         {
-          name: "cappuu",
+          name: "Espresso",
           population: 0,
-          price: 20,
+          price: 2.10,
           sugar: false
         },
         {
-          name: "amerii",
+          name: "Drip Coffee",
           population: 0,
-          price: 15,
+          price: 2.20,
+          sugar: false
+        },
+        {
+          name: "Cold Brew",
+          population: 0,
+          price: 3.00,
+          sugar: false
+        },
+        {
+          name: "Ice Tea",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Hot Tea",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Cappuccino",
+          population: 0,
+          price: 2.85,
+          sugar: false
+        },
+        {
+          name: "Latte",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Americano",
+          population: 0,
+          price: 2.40,
           sugar: false
         }
       ];
 
-      fetch('http://cities.jonkri.se/', {
-        body: JSON.stringify({cafeMenu, id: 111}),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }).then(response => response.json())
-        .then(result => {
-          console.log(result);
-        });
+      function postMenu(){
+        fetch('http://cities.jonkri.se/', {
+          body: JSON.stringify({cafeMenu, id: MENU_ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        }).then(response => response.json())
+          .then(result => {
+            console.log(result);
+          });
+      }
 
+      function updateOrder(){
+        fetch('http://cities.jonkri.se/'+MENU_ID, {
+          body: JSON.stringify({ EDITEDMENU }),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'PUT'
+        }).then(response => response.json())
+          .then(result => {
+            console.log(result);
+          });
+      }
 
     </script>
 
