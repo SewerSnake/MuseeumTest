@@ -285,14 +285,32 @@
             ['vermeer','Johannes Vermeer'],['vangogh','Vincent van Gogh'],
             ['michelangelo','Michelangelo'],['davinci','Lenardo da Vinci']]
 
+            var cardStyle = {
+              display: "inline-block",
+              height: 188,
+              width: 150,
+              padding: 0,
+              margin: 10,
+              backgroundColor:"FFF",
+              boxShadow: "0px 5px 1px #DCDCDC"
+            };
+
           var renderValues = artists.map(function (value) {
             var x = "Painters/"+value[0] + ".jpeg";
             var y = "art/"+value[0];
-            return <Link to={y} key={value[0]}> <img src={x} /></Link>
+            return <div key={value[0]} style={cardStyle}>
+              <Link to={y} ><Square  image={x}/> </Link>
+              <Label  name={value[1]}/>
+            </div>
+
+          //  return <Link to={y} key={value[0]}> <img src={x} /></Link>
 
           })
           // <p className="artistName">{value[1]}</p>
-
+          // <div  style={cardStyle}>
+          //   <Square color={this.props.color} image={this.props.image}/>
+          //   <Label colorL={this.props.colorL} name={this.props.name}/>
+          // </div>
 
             return <section id="artList" >
             <h1>Artists</h1>
