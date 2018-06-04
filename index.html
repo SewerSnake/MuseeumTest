@@ -430,6 +430,35 @@
       </HashRouter>, document.getElementById('box2'));
 
 
+      //CAFE
+      var cafeMenu =
+      [
+        {
+          name: "cappuu",
+          population: 0,
+          price: 20,
+          sugar: false
+        },
+        {
+          name: "amerii",
+          population: 0,
+          price: 15,
+          sugar: false
+        }
+      ];
+
+      fetch('http://cities.jonkri.se/', {
+        body: JSON.stringify({cafeMenu, id: 111}),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }).then(response => response.json())
+        .then(result => {
+          console.log(result);
+        });
+
+
     </script>
 
   </body>
