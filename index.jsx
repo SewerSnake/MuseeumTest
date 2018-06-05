@@ -141,6 +141,10 @@ class Card extends React.Component {
         artistName = 'floris&nbsp;claesz';
       }
 
+      if (artistName == 'vangogh' || 'Vincent van Gogh') {
+        artistName = 'vincent+van+gogh';
+      }
+
       fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
       + artistName + "&s=relevance" + "&ps=" + 5)
 
