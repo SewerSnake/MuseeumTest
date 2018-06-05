@@ -35,6 +35,8 @@
 
 
     <script type="text/jsx">
+    // Kommer att lösas med webpack
+    // var moment = require('moment');
 
       var destination = document.querySelector(".logo");
       var destination2 = document.querySelector(".logoS");
@@ -202,9 +204,9 @@
             return <p>Could not find what you seek</p>
           } else {
 
-            return <div>{
+            return <div id="artistArtGallery">{
               this.state.artArray.map(function(value) {
-                return <div id="artistArtGallery">
+                return <div>
                   {createImage(value.webImage)}
                   <PaintingInfo id={value.objectNumber}></PaintingInfo>
                 </div>
@@ -429,6 +431,149 @@
         </div>
       </HashRouter>, document.getElementById('box2'));
 
+
+      //CAFE
+
+      // Menu Card component
+      class MenuSquare extends React.Component {
+        render() {
+          var squareStyle = {
+            height: 120,
+            backgroundColor: this.props.color,
+            backgroundImage: "url("+this.props.image+")",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+          };
+          return (
+            <div style={squareStyle}></div>
+          );
+        }
+      }
+      class MenuLabel extends React.Component {
+        render() {
+          var labelStyle = {
+
+            fontWeight: "bold",
+            backgroundColor: this.props.colorL,
+            padding: 13,
+            height: 30,
+            margin: 0
+          };
+          return (
+            <p style={labelStyle}>{this.props.name}</p>
+          );
+        }
+      }
+      class MenuCard extends React.Component {
+        render() {
+          var cardStyle = {
+            display: "inline-block",
+            height: 150,
+            width: 120,
+            padding: 0,
+            margin: 10,
+            backgroundColor:"FFF",
+            boxShadow: "0px 5px 1px #DCDCDC"
+          };
+          return (
+            <div style={cardStyle}>
+              <Square color={this.props.color} image={this.props.image}/>
+              <Label colorL={this.props.colorL} name={this.props.name}/>
+            </div>
+          );
+        }
+      }
+
+      var MENU_ID = 111;
+      var cafeMenu =
+      [
+        {
+          name: "Espresso",
+          population: 0,
+          price: 2.10,
+          sugar: false
+        },
+        {
+          name: "Drip Coffee",
+          population: 0,
+          price: 2.20,
+          sugar: false
+        },
+        {
+          name: "Cold Brew",
+          population: 0,
+          price: 3.00,
+          sugar: false
+        },
+        {
+          name: "Ice Tea",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Hot Tea",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Cappuccino",
+          population: 0,
+          price: 2.85,
+          sugar: false
+        },
+        {
+          name: "Latte",
+          population: 0,
+          price: 2.95,
+          sugar: false
+        },
+        {
+          name: "Americano",
+          population: 0,
+          price: 2.40,
+          sugar: false
+        }
+      ];
+
+      //POST request + create menu items
+      function postMenu(){
+        fetch('http://cities.jonkri.se/', {
+          body: JSON.stringify({cafeMenu, id: MENU_ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        }).then(response => response.json())
+          .then(result => {
+            console.log(result);
+/*
+            var renderCards = cafeMenu.map(function (value, index) {
+              var img = value.name;
+              return <MenuCard id={index} color="lightgrey" colorL="#FFC983" name={value.name} image={img}/>
+            })
+            ReactDOM.render(<section id="cafeMenu">
+              <h1>MENU</h1>
+              <div>{renderCards}</div>
+            </section>, document.getElementById('box2'));
+*/
+          });
+      };
+
+      function updateOrder(){
+        fetch('http://cities.jonkri.se/'+MENU_ID, {
+          body: JSON.stringify({ EDITEDMENU }),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'PUT'
+        }).then(response => response.json())
+          .then(result => {
+            console.log(result);
+          });
+      }
 
     </script>
 
