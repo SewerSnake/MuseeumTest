@@ -121,6 +121,7 @@
           backgroundColor: this.props.colorL,
           padding: 13,
           height: 30,
+          color: 'black',
           margin: 0
         };
         return (
@@ -217,7 +218,7 @@
 
         if (webImage != null) {
           var image = "url(" + webImage.url.replace("s0", "s128") + ")";
-          
+
           return <div id="painting" style={{backgroundImage: image}}
           onClick={function functionName(event) {
             var parrotBox = document.querySelector('#box1 > .bg-image');
@@ -286,11 +287,12 @@
       // Petteri
       class Art extends React.Component {
         render() {
-
             var artists = [['rembrandt','Rembrandt'],['monet','Claude Monet'],
             ['picasso','Pablo Picasso'],['edgardegas','Edgar Degas'],
             ['vermeer','Johannes Vermeer'],['vangogh','Vincent van Gogh'],
-            ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci']]
+            ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci'],
+            ['AdriaenCoorte','Adriaen Coorte'],['WillemClaesz','Willem Claesz'],
+            ['FlorisClaesz','Floris Claesz']]
 
 
           var renderValues = artists.map(function (value) {
