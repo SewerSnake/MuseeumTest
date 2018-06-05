@@ -451,7 +451,6 @@
       class MenuLabel extends React.Component {
         render() {
           var labelStyle = {
-
             fontWeight: "bold",
             backgroundColor: this.props.colorL,
             padding: 13,
@@ -547,10 +546,11 @@
         }).then(response => response.json())
           .then(result => {
             console.log(result);
+
 /*
             var renderCards = cafeMenu.map(function (value, index) {
               var img = value.name;
-              return <MenuCard id={index} color="lightgrey" colorL="#FFC983" name={value.name} image={img}/>
+              return <MenuCard key={index} color="lightgrey" colorL="#FFC983" name={value.name} image={img}/>
             })
             ReactDOM.render(<section id="cafeMenu">
               <h1>MENU</h1>
@@ -559,6 +559,10 @@
 */
           });
       };
+
+      function clickMenuItem(){
+        console.log('CLICK!');
+      }
 
       function updateOrder(){
         fetch('http://cities.jonkri.se/'+MENU_ID, {
