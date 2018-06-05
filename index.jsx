@@ -54,7 +54,7 @@ var Square = require('./components/square.jsx');
     render() {
         return <section id="section-a">
                   <div className="content-wrap">
-                    <h2 className="content-title">Fine art & web technology</h2>
+                    <h2 className="content-title">Art & web technology</h2>
                     <p>Built with:</p>
                       <div id="builtWithCards">
                         <Card color="lightgrey" colorL="#FFC983" name="React" image={'media/React-icon.svg'}/>
@@ -339,12 +339,12 @@ class Card extends React.Component {
         return <tr key={index}><td>{event.period.text}</td><td>{event.exposition.name}</td><td>{available}</td></tr>;
       });
 
-      return <div >
-      <form><input type="date" min={this.state.today} onChange={this.onChange}/></form>
+      return <div id="plannerTable">
+      <form>search date:<br/><input type="date" min={this.state.today} onChange={this.onChange}/></form>
       <br />
-      <table style={border}>
+      <table>
       <tbody>
-      <tr><th>{this.state.calendarDate}</th></tr>
+      <tr><th id="thDate" >{this.state.calendarDate}</th></tr>
       <tr>
         <th>Time</th>
         <th>Event</th>

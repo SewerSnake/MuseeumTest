@@ -136,6 +136,25 @@ body {
  height: 100px;
 }
 
+/* Planner */
+#plannerTable {
+  padding: 50px 20px 0px 50px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+#thDate {
+    background-color: #FFC983;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+tr:hover {background-color:#FFEACF;}
+
 /* Notes */
 /* navUL has margin 13px */
 /* grid-template-rows: 1fr 1fr; */
