@@ -129,6 +129,18 @@ class Card extends React.Component {
       var artistName = this.props.match.params.artistName;
       var artArr = [];
 
+      if (artistName == 'AdriaenCoorte') {
+        artistName = 'coorte';
+      }
+
+      if (artistName == 'WillemClaesz') {
+        artistName = 'willem&nbsp;claesz';
+      }
+
+      if (artistName == 'FlorisClaesz') {
+        artistName = 'floris&nbsp;claesz';
+      }
+
       fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
       + artistName + "&s=relevance" + "&ps=" + 5)
 
