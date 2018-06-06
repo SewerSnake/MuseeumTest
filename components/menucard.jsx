@@ -8,7 +8,7 @@ class MenuCard extends React.Component {
   render() {
     var cardStyle = {
       display: "inline-block",
-      height: 150,
+      height: 170,
       width: 140,
       padding: 0,
       margin: 10,
