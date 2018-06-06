@@ -13,7 +13,7 @@ var ArtGallery = require('./components/artGallery.jsx');
 var Card = require('./components/card.jsx');
 var Art = require('./components/art.jsx');
 var Planner = require('./components/planner.jsx');
-
+var Menu = require('./components/menu.jsx');
 
   var destination = document.querySelector(".logo");
   var destination2 = document.querySelector(".logoS");
@@ -83,96 +83,8 @@ var Planner = require('./components/planner.jsx');
 
 
 
-  //MILJA KOD >>>
-  class Menu extends React.Component{
-    constructor(){
-      super();
-      this.state = {
-        menuArray: []
-      }
-    }
-    componentDidMount(){
-      console.log('mounted');
-      //postMenu()
 
-      fetch('http://cities.jonkri.se/', {
-        body: JSON.stringify({cafeMenu, id: MENU_ID}),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }).then(response => response.json())
-        .then(result => {
-          console.log('got result');
-          fetch('http://cities.jonkri.se/'+MENU_ID)
-          .then(response => response.json())
-          .then(result => {
-            return result
-          })
-          .then(result => {
-            console.log('got array');
-            this.setState({ menuArray: result });
-          });
-        })
-    }
-    render(){
-      console.log('render');
-      return <div><h1>HALLOHALLOHALLOOOOO!!!</h1></div>
-    }
-  }
 
-  var MENU_ID = 'fullmenu';
-  var cafeMenu =
-  [
-    {
-      name: "Espresso",
-      population: 0,
-      price: 2.10,
-      sugar: false
-    },
-    {
-      name: "Drip Coffee",
-      population: 0,
-      price: 2.20,
-      sugar: false
-    },
-    {
-      name: "Cold Brew",
-      population: 0,
-      price: 3.00,
-      sugar: false
-    },
-    {
-      name: "Ice Tea",
-      population: 0,
-      price: 2.95,
-      sugar: false
-    },
-    {
-      name: "Hot Tea",
-      population: 0,
-      price: 2.95,
-      sugar: false
-    },
-    {
-      name: "Cappuccino",
-      population: 0,
-      price: 2.85,
-      sugar: false
-    },
-    {
-      name: "Latte",
-      population: 0,
-      price: 2.95,
-      sugar: false
-    },
-    {
-      name: "Americano",
-      population: 0,
-      price: 2.40,
-      sugar: false
-    }
-  ];
     // function updateOrder(){
     //   fetch('http://cities.jonkri.se/'+MENU_ID, {
     //     body: JSON.stringify({ EDITEDMENU }),
@@ -220,52 +132,3 @@ var Planner = require('./components/planner.jsx');
   //CAFE
 
   // Menu Card component
-  class MenuSquare extends React.Component {
-    render() {
-      var squareStyle = {
-        height: 120,
-        backgroundColor: this.props.color,
-        backgroundImage: "url("+this.props.image+")",
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center'
-      };
-      return (
-        <div style={squareStyle}></div>
-      );
-    }
-  }
-  class MenuLabel extends React.Component {
-    render() {
-      var labelStyle = {
-
-        fontWeight: "bold",
-        backgroundColor: this.props.colorL,
-        padding: 13,
-        height: 30,
-        margin: 0
-      };
-      return (
-        <p style={labelStyle}>{this.props.name}</p>
-      );
-    }
-  }
-  class MenuCard extends React.Component {
-    render() {
-      var cardStyle = {
-        display: "inline-block",
-        height: 150,
-        width: 120,
-        padding: 0,
-        margin: 10,
-        backgroundColor:"FFF",
-        boxShadow: "0px 5px 1px #DCDCDC"
-      };
-      return (
-        <div style={cardStyle}>
-          <Square color={this.props.color} image={this.props.image}/>
-          <Label colorL={this.props.colorL} name={this.props.name}/>
-        </div>
-      );
-    }
-  }
