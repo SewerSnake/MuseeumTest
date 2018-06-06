@@ -5,7 +5,7 @@ class MenuLabel extends React.Component {
     super(props);
     this.state = {
       sugar: false,
-      orders: 0
+      orders: this.props.item.orders
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -13,12 +13,12 @@ class MenuLabel extends React.Component {
   handleClick(event) {
     this.setState({ sugar: this.props.item.sugar });
     this.props.item.sugar = !this.props.item.sugar;
-    console.log('item ' + this.props.item.sugar);
   }
   handleChange(event){
-    console.log(event.target.value);
-    this.setState({ orders: event.target.value});
-    this.props.item.orders = this.state.orders;
+    console.log('target value ' + event.target.value); // 1
+    this.setState({ orders: event.target.value}); // skall vara 1
+    console.log('state value ' + this.state.orders);
+    this.props.item.orders = event.target.value;
   }
   render() {
     console.log(this.props.item);
