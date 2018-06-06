@@ -3,7 +3,6 @@ var React = require('react')
 class Label extends React.Component {
   render() {
     var labelStyle = {
-
       fontWeight: "bold",
       backgroundColor: this.props.colorL,
       padding: 13,

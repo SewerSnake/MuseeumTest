@@ -34,15 +34,15 @@ class Menu extends React.Component{
   }
   handleClick(){
     console.log('Clicked!');
+    console.log(this.state.menuArray);
   }
   render(){
     console.log('render');
-
     var menuItems = this.state.menuArray.map((item, index) => {
-      console.log(item.name);
-      return <MenuCard onClick={this.handleClick} key={index} color="lightgrey" colorL="#FFC983" item={item} name={item.name} image={index} />
+      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
     });
-    return <div>{menuItems}</div>
+    console.log(this.state.menuArray);
+    return <div>{menuItems}<br/><br/><button type="button" onClick={this.handleClick}>Place order</button></div>
   }
 }
 var MENU_ID = 'fullmenu';
@@ -52,49 +52,57 @@ var cafeMenu =
     name: "Espresso",
     population: 0,
     price: 2.10,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Drip Coffee",
     population: 0,
     price: 2.20,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Cold Brew",
     population: 0,
     price: 3.00,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Ice Tea",
     population: 0,
     price: 2.95,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Hot Tea",
     population: 0,
     price: 2.95,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Cappuccino",
     population: 0,
     price: 2.85,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Latte",
     population: 0,
     price: 2.95,
-    sugar: false
+    sugar: false,
+    orders: 0
   },
   {
     name: "Americano",
     population: 0,
     price: 2.40,
-    sugar: false
+    sugar: false,
+    orders: 0
   }
 ];
 
