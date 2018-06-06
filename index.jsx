@@ -14,56 +14,38 @@ var Card = require('./components/card.jsx');
 var Art = require('./components/art.jsx');
 var Planner = require('./components/planner.jsx');
 var Menu = require('./components/menu.jsx');
+var LogoLetter = require('./components/logoletter.jsx')
+var LogoLetter2 = require('./components/logoletter2.jsx')
 
-  var destination = document.querySelector(".logo");
-  var destination2 = document.querySelector(".logoS");
+var destination = document.querySelector(".logo");
+var destination2 = document.querySelector(".logoS");
 
-  class LogoLetter extends React.Component {
-    render() {
-      return (
-        <div id="logoletter">
-        {this.props.children}
-        </div>
-      );
-    }
-  }
-  class LogoLetter2 extends React.Component {
-    render() {
-      return(
-        <div id="logoletter2">
-    {this.props.children}
-        </div>
-      );
-    }
-  }
+ReactDOM.render(
+  <div>
+    <LogoLetter>M</LogoLetter>
+    <LogoLetter>U</LogoLetter>
+    <LogoLetter>S</LogoLetter>
+    <LogoLetter>E</LogoLetter>
+    <LogoLetter>U</LogoLetter>
+    <LogoLetter>M</LogoLetter>
+  </div>,
+  destination
+);
+ReactDOM.render(
+  <div>
+    <LogoLetter2>A</LogoLetter2>
+    <LogoLetter2>P</LogoLetter2>
+    <LogoLetter2>P</LogoLetter2>
+  </div>,
+  destination2
+);
 
-  ReactDOM.render(
-    <div>
-      <LogoLetter>P</LogoLetter>
-      <LogoLetter>U</LogoLetter>
-      <LogoLetter>S</LogoLetter>
-      <LogoLetter>E</LogoLetter>
-      <LogoLetter>U</LogoLetter>
-      <LogoLetter>M</LogoLetter>
-    </div>,
-    destination
-  );
-  ReactDOM.render(
-    <div>
-      <LogoLetter2>A</LogoLetter2>
-      <LogoLetter2>P</LogoLetter2>
-      <LogoLetter2>P</LogoLetter2>
-    </div>,
-    destination2
-  );
+
 
 
 
   // var homePageContent = document.querySelector(".content-wrap");
 // 1. Card component with 3parts
-
-
-
 
 // ReactDOM.render (
 //   <div>
@@ -73,17 +55,6 @@ var Menu = require('./components/menu.jsx');
 //   </div>,
 //   homePageContent
 // );
-
-
-
-
-
-
-
-
-
-
-
 
     // function updateOrder(){
     //   fetch('http://cities.jonkri.se/'+MENU_ID, {
