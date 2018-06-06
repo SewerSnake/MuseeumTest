@@ -1,7 +1,7 @@
 var React = require('react')
 
-var Label = require('./label.jsx')
-var Square = require('./square.jsx')
+var MenuLabel = require('./menulabel.jsx')
+var MenuSquare = require('./menusquare.jsx')
 
 
 class MenuCard extends React.Component {
@@ -9,7 +9,7 @@ class MenuCard extends React.Component {
     var cardStyle = {
       display: "inline-block",
       height: 150,
-      width: 120,
+      width: 140,
       padding: 0,
       margin: 10,
       backgroundColor:"FFF",
@@ -17,8 +17,8 @@ class MenuCard extends React.Component {
     };
     return (
       <div style={cardStyle}>
-        <Square color={this.props.color} image={this.props.image}/>
-        <Label colorL={this.props.colorL} name={this.props.name}/>
+        <MenuSquare color={this.props.color} image={this.props.image}/>
+        <MenuLabel item={this.props.item} colorL={this.props.colorL} name={this.props.name}/>
       </div>
     );
   }

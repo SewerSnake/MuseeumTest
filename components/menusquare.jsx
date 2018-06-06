@@ -3,7 +3,7 @@ var React = require('react')
 class MenuSquare extends React.Component {
   render() {
     var squareStyle = {
-      height: 120,
+      height: 110,
       backgroundColor: this.props.color,
       backgroundImage: "url("+this.props.image+")",
       backgroundSize: 'contain',
