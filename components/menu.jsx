@@ -1,18 +1,17 @@
 var React = require('react')
+var MenuCard = require('./menucard.jsx');
 
-
-//MILJA KOD >>>
 class Menu extends React.Component{
   constructor(){
     super();
     this.state = {
       menuArray: []
     }
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount(){
     console.log('mounted');
-    //postMenu()
-
+/*
     fetch('http://cities.jonkri.se/', {
       body: JSON.stringify({cafeMenu, id: MENU_ID}),
       headers: {
@@ -22,20 +21,28 @@ class Menu extends React.Component{
     }).then(response => response.json())
       .then(result => {
         console.log('got result');
+*/
         fetch('http://cities.jonkri.se/'+MENU_ID)
         .then(response => response.json())
         .then(result => {
           return result
         })
         .then(result => {
-          console.log('got array');
-          this.setState({ menuArray: result });
+          this.setState({ menuArray: result.cafeMenu });
         });
-      })
+//      })
+  }
+  handleClick(){
+    console.log('Clicked!');
   }
   render(){
     console.log('render');
-    return <div><h1>HALLOHALLOHALLOOOOO!!!</h1></div>
+
+    var menuItems = this.state.menuArray.map((item, index) => {
+      console.log(item.name);
+      return <MenuCard onClick={this.handleClick} key={index} color="lightgrey" colorL="#FFC983" item={item} name={item.name} image={index} />
+    });
+    return <div>{menuItems}</div>
   }
 }
 var MENU_ID = 'fullmenu';
@@ -90,7 +97,5 @@ var cafeMenu =
     sugar: false
   }
 ];
-
-
 
 module.exports = Menu;
