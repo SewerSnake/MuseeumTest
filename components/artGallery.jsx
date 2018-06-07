@@ -30,21 +30,25 @@ class ArtGallery extends React.Component {
     var artistName = this.props.match.params.artistName;
     var artArr = [];
 
-console.log(this.props.match.params.artistName)
+    console.log(this.props.match.params.artistName)
     if (artistName == 'AdriaenCoorte') {
       artistName = 'coorte';
     }
 
     if (artistName == 'WillemClaesz') {
-      artistName = 'willem&nbsp;claesz';
+      artistName = 'willem%20claesz';
     }
 
     if (artistName == 'FlorisClaesz') {
-      artistName = 'floris&nbsp;claesz';
+      artistName = 'floris%20claesz';
     }
 
     if (artistName == 'vangogh') {
-      artistName = 'vincent+van+gogh';
+      artistName = 'vincent%20van%20gogh';
+    }
+
+    if (artistName == 'rachelRuysch') {
+      artistName = 'rachel%20ruysch'
     }
 
     fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
