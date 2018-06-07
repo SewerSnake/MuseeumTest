@@ -40,12 +40,12 @@ console.log(this.props.match.params.artistName)
     }
 
     if (artistName == 'FlorisClaesz') {
-      artistName = 'floris&nbsp;claesz';
+      artistName = 'floris+claesz';
     }
 
-    if (artistName == 'vangogh' || 'Vincent van Gogh') {
-      artistName = 'vincent+van+gogh';
-    }
+    // if (artistName == 'vangogh' || 'Vincent van Gogh') {
+    //   artistName = 'vincent+van+gogh';
+    // }
 
     fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
     + artistName + "&s=relevance" + "&ps=" + 5)
