@@ -1,7 +1,6 @@
 var React = require('react')
 var PaintingInfo = require('./paintinginfo.jsx')
 
-// Eric
 function createImage(webImage) {
 
   if (webImage != null) {
@@ -48,7 +47,7 @@ class ArtGallery extends React.Component {
     }
 
     if (artistName == 'rachelRuysch') {
-      artistName = 'rachel%20ruysch'
+      artistName = 'rachel%20ruysch';
     }
 
     fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="

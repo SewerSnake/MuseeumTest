@@ -12,7 +12,7 @@ class Menu extends React.Component{
   componentDidMount(){
     console.log('mounted');
 
-    fetch('http://cities.jonkri.se/', {
+    /*fetch('http://cities.jonkri.se/', {
       body: JSON.stringify({cafeMenu, id: MENU_ID}),
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ class Menu extends React.Component{
       method: 'POST'
     }).then(response => response.json())
       .then(result => {
-        console.log('got result');
+        console.log('got result');*/
 
         fetch('http://cities.jonkri.se/'+MENU_ID)
         .then(response => response.json())
@@ -30,7 +30,7 @@ class Menu extends React.Component{
         .then(result => {
           this.setState({ menuArray: result.cafeMenu });
         });
-      })
+//      })
   }
   handleClick(){
     console.log('Clicked!');
