@@ -11,7 +11,7 @@ class Menu extends React.Component{
   }
   componentDidMount(){
     console.log('mounted');
-/*
+
     fetch('http://cities.jonkri.se/', {
       body: JSON.stringify({cafeMenu, id: MENU_ID}),
       headers: {
@@ -21,7 +21,7 @@ class Menu extends React.Component{
     }).then(response => response.json())
       .then(result => {
         console.log('got result');
-*/
+
         fetch('http://cities.jonkri.se/'+MENU_ID)
         .then(response => response.json())
         .then(result => {
@@ -30,11 +30,26 @@ class Menu extends React.Component{
         .then(result => {
           this.setState({ menuArray: result.cafeMenu });
         });
-//      })
+      })
   }
   handleClick(){
     console.log('Clicked!');
     console.log(this.state.menuArray);
+    var finalOrder = this.state.menuArray;
+
+    //TODO: Use PUT to post order menu to API. (then fetch menu and render a final order div?)
+    fetch('http://cities.jonkri.se/'+MENU_ID, {
+        body: JSON.stringify({ finalOrder, id: MENU_ID }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT'
+      }).then(response => response.json())
+        .then(result => {
+          console.log('final order:');
+          console.log(result);
+        });
+
   }
   render(){
     console.log('render');
