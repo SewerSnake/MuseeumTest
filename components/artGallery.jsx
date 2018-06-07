@@ -43,7 +43,7 @@ console.log(this.props.match.params.artistName)
       artistName = 'floris&nbsp;claesz';
     }
 
-    if (artistName == 'vangogh' || 'Vincent van Gogh') {
+    if (artistName == 'vangogh') {
       artistName = 'vincent+van+gogh';
     }
 
