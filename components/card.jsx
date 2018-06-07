@@ -7,12 +7,13 @@ class Card extends React.Component {
   render() {
     var cardStyle = {
       display: "inline-block",
-      height: 188,
+      height: 206,
       width: 150,
       padding: 0,
       margin: 10,
       backgroundColor:"FFF",
-      boxShadow: "0px 5px 1px #DCDCDC"
+      verticalAlign: "middle",
+      boxShadow: "0px 0px 6px #666"
     };
     return (
       <div style={cardStyle}>
