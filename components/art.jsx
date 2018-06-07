@@ -8,9 +8,9 @@ var Link = ReactRouterDOM.Link;
 class Art extends React.Component {
   render() {
       var artists = [['rembrandt','Rembrandt'],['monet','Claude Monet'],
-      ['picasso','Pablo Picasso'],['rachelRuysch','Rachel Ruysch'],['edgardegas','Edgar Degas'],
-      ['vermeer','Johannes Vermeer'],['vangogh','Vincent van Gogh'],
-      ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci'],
+      ['vermeer','Johannes Vermeer'],['rachelRuysch','Rachel Ruysch'],['edgardegas','Edgar Degas'],
+      ['jozefIsraels','Josef Israëls'],['vangogh','Vincent van Gogh'],
+      ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci'],['picasso','Pablo Picasso'],
       ['AdriaenCoorte','Adriaen Coorte'],['WillemClaesz','Willem Claesz'],
       ['FlorisClaesz','Floris Claesz']]
 

@@ -51,6 +51,10 @@ class ArtGallery extends React.Component {
       artistName = 'rachel%20ruysch'
     }
 
+    if (artistName == 'jozefIsraels') {
+      artistName = 'jozef%20israels'
+    }
+
     fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
     + artistName + "&s=relevance" + "&ps=" + 5)
 
