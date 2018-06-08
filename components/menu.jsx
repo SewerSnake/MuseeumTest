@@ -4,19 +4,18 @@ var { Provider } = require('react-redux');
 var MenuCard = require('./menucard.jsx');
 var Redux = require('redux');
 var ReactRedux = require('react-redux');
-
 // <<<<<< REDUX TEST
 
-var MENU_ID = 'fullmenu';
 
+var MENU_ID = 'fullmenu';
 class Menu extends React.Component {
   render() {
+
     console.log('render');
     console.log(this.props.menu);
-    return <div><h1>...</h1></div>;
+    return <div></div>;
   }
 }
-
 var ConnectedMenu = ReactRedux.connect(
   function(state) {
     return { menu: state.menu };
@@ -31,70 +30,25 @@ var ConnectedMenu = ReactRedux.connect(
       }
     };
   })(Menu);
-
 //REDUCER
-var reducer = function(state, action) {
-  console.log('action: ', action.payload);
-  switch (action.type) {
-    case 'SET_MENU':
-      console.log('setmenu');
-      return {
-        state: action.payload
-      };
-    default: return state;
-  }
-};
-
+// var reducer = function(state, action) {
+//   console.log('action: ', action.payload);
+//   switch (action.type) {
+//     case 'SET_MENU':
+//       return {
+//         menu: action.payload
+//       };
+//     default: return state;
+//   }
+// };
 //STATE: menu: { drink: {...}, {...} }
-var store = Redux.createStore(reducer, { menu: {}, id: MENU_ID});
-
+// var store = Redux.createStore(reducer, { menu: {}, id: MENU_ID});
 // API ANROP - NOLLSTÄLLER MENYN
-fetch('http://cities.jonkri.se')
-  .then(response => response.json())
-  .then(result => {
-    var array = result;
-    let object = array.find(o => o.id === MENU_ID);
-    if (object === undefined) {
-      console.log('Menu not found, POSTing')
-      fetch('http://cities.jonkri.se/', {
-        body: JSON.stringify({cafeMenu, id: MENU_ID}),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST'
-      }).then(response => response.json())
-        .then(result => {
-        console.log('POST result', result);
-        var object = result.find(o => o.id === MENU_ID);
-        console.log('object:', object);
-        store.dispatch({ type: 'SET_MENU', payload: object });
-      })
-    }  else {
-      console.log('Found old menu, resetting');
-      // DELETE EDITED MENU
-      // fetch('http://cities.jonkri.se/'+MENU_ID, {
-      //   method: 'DELETE'
-      // })
-      fetch('http://cities.jonkri.se/' + MENU_ID, {
-        body: JSON.stringify({cafeMenu, id: MENU_ID}),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'PUT'})
-      .then(response => response.json()).then(result => {
-        console.log('PUT result', result); //Get ett {menu:, id: }
-        store.dispatch({ type: 'SET_MENU', payload: result})
-      })
-    }
-  })
 
-ReactDOM.render(<Provider store={store}>
-<div><ConnectedMenu/ ></div>
-</Provider>, document.getElementById('box2'));
-
+// ReactDOM.render(<Provider store={store}>
+// <div>{ConnectedMenu}</div>
+// </Provider>, document.getElementById('box2'));
 // >>>>>> REDUX END TEST
-
-
 // class Menu extends React.Component{
 //   constructor(){
 //     super();
@@ -154,7 +108,6 @@ ReactDOM.render(<Provider store={store}>
 //     return <div>{menuItems}<br/><br/><button type="button" onClick={this.handleClick}>Place order</button></div>
 //   }
 // }
-
 var cafeMenu =
 {
   espresso: {
@@ -206,5 +159,4 @@ var cafeMenu =
     cups: 0
   }
 };
-
-module.exports = Menu;
+module.exports = ConnectedMenu;
