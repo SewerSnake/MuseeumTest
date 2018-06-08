@@ -18,7 +18,14 @@ class Art extends React.Component {
     var renderValues = artists.map(function (value) {
       var img = "Painters/"+value[0] + ".jpeg";
       var routeValue = "art/"+value[0];
-      return <Link to={routeValue} key={value[0]} ><Card color="lightgrey" colorL="#FFC983" name={value[1]} image={img}/></Link>
+      return <Link to={routeValue} key={value[0]} >
+      <Card
+        heightSqr="150px"
+        color="lightgrey"
+        colorLbl="#FFC983"
+        heightLbl="30px"
+        name={value[1]}
+        image={img}/></Link>
     })
 
       return <section id="artList" >

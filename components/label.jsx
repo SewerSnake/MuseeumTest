@@ -4,9 +4,9 @@ class Label extends React.Component {
   render() {
     var labelStyle = {
       fontWeight: "bold",
-      backgroundColor: this.props.colorL,
+      backgroundColor: this.props.colorLbl,
       padding: 13,
-      height: 30,
+      height: this.props.heightLbl,
       color: 'black',
       margin: 0
     };

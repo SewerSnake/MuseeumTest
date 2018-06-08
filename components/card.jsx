@@ -7,18 +7,22 @@ class Card extends React.Component {
   render() {
     var cardStyle = {
       display: "inline-block",
-      height: 206,
+      height: this.props.height,
       width: 150,
       padding: 0,
       margin: 10,
       backgroundColor:"FFF",
-      verticalAlign: "middle",
+      verticalAlign: "top",
       boxShadow: "0px 0px 6px #666"
     };
     return (
       <div style={cardStyle}>
-        <Square color={this.props.color} image={this.props.image}/>
-        <Label colorL={this.props.colorL} name={this.props.name}/>
+        <Square
+          color={this.props.color}
+          heightSqr={this.props.heightSqr}
+          image={this.props.image}/>
+        <Label
+          colorLbl={this.props.colorLbl} heightLbl={this.props.heightLbl} name={this.props.name}/>
       </div>
     );
   }
