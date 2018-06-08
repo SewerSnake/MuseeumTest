@@ -11,9 +11,13 @@ var MENU_ID = 'fullmenu';
 class Menu extends React.Component {
   render() {
 
-    console.log('render');
+    console.log('rendesjdlöskdfjlöaskjdfr');
     console.log(this.props.menu);
-    return <div></div>;
+        var menuItems = this.state.menuArray.map((item, index) => {
+          return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
+        });
+        console.log(this.state.menuArray);
+        return <div>{menuItems}<br/><br/><button type="button" onClick={this.handleClick}>Place order</button></div>
   }
 }
 var ConnectedMenu = ReactRedux.connect(
