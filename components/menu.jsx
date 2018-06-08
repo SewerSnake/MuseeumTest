@@ -4,8 +4,6 @@ var { Provider } = require('react-redux');
 var MenuCard = require('./menucard.jsx');
 var Redux = require('redux');
 var ReactRedux = require('react-redux');
-// <<<<<< REDUX TEST
-
 
 var MENU_ID = 'fullmenu';
 class Menu extends React.Component {
@@ -13,7 +11,14 @@ class Menu extends React.Component {
 
     console.log('render');
     console.log(this.props.menu);
-    return <div></div>;
+    var array = Object.values(this.props.menu);
+    console.log(array);
+
+    var menuItems = array.map((item, index) => {
+      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
+    });
+
+    return <div>{menuItems}</div>;
   }
 }
 var ConnectedMenu = ReactRedux.connect(
@@ -23,7 +28,6 @@ var ConnectedMenu = ReactRedux.connect(
   function(dispatch){
     return {
       addMenu: function() {
-        console.log('button');
         return dispatch({
           type: 'SET_MENU'
         })
