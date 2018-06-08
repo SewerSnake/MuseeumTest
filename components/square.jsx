@@ -4,9 +4,9 @@ var React = require('react');
 class Square extends React.Component {
   render() {
     var squareStyle = {
-      height: 150,
       backgroundColor: this.props.color,
       backgroundImage: "url("+this.props.image+")",
+      height: this.props.heightSqr,
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center'
