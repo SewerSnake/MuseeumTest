@@ -127,23 +127,23 @@ function fetchsomthing() {
 
 
 
-  var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
+  var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink; var Route = ReactRouterDOM.Route; ReactDOM.render(
 <Provider store={store}>
   <HashRouter>
     <div>
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <Link to="/">Home</Link>
+            <NavLink exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</NavLink>
           </li>
           <li id="navLi">
-            <Link to="/art">Art</Link>
+            <NavLink exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</NavLink>
           </li>
           <li id="navLi">
-            <Link to="/planner">Planner</Link>
+            <NavLink exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
           </li>
           <li id="navLi">
-            <Link to="/cafe" onClick={fetchsomthing} >Cafe</Link>
+            <NavLink exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
           </li>
         </ul>
       </nav>
