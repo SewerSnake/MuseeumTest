@@ -34,9 +34,15 @@ var reducer = function(state, action) {
         //
       };
     case 'ADD_CUPS':
-      return {
-        cups: action.payload
-      };
+
+    var newMenu1 = Object.assign({}, state.menu, { // klonar menyn o modifierar med ny drink
+      [action.item]: Object.assign({}, state.menu[action.item], { //klonar drink som skall ändras
+        cups: action.payload })
+    })
+    console.log('newMenu1:', newMenu1);
+
+  return {menu: newMenu1};
+
     case 'CHANGE_SUGAR':
       // console.log('action.item:', action.item); // espresso
       // console.log('state.menu.action.item:', state.menu[action.item]); // {espresso..}

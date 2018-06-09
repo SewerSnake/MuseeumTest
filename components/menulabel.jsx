@@ -19,10 +19,10 @@ class MenuLabel extends React.Component {
       margin: 0
     };
     return (
-      <p style={labelStyle} item={this.props.item}>{this.props.item.name}
+      <p id={this.props.item.id} style={labelStyle} item={this.props.item}>{this.props.item.name}
         <br/>
         Add sugar
-        <input id={this.props.item.id} value={this.state.sugar} type="checkbox" onClick={this.props.changeSugar}/>
+        <input value={this.state.sugar} type="checkbox" onClick={this.props.changeSugar}/>
         <br/>
         Cups <input type="number" min="0" max="5" value={this.state.orders} onChange={this.props.addCups}/>
       </p>
@@ -47,8 +47,10 @@ var ConnectedMenuLabel = ReactRedux.connect(
         })
       },
       addCups: function(event){
+            console.log('ADDCUPS:');
         return dispatch({
           type: 'ADD_CUPS',
+          item: event.target.parentElement.id,
           payload: event.target.value
         })
       },
@@ -57,7 +59,7 @@ var ConnectedMenuLabel = ReactRedux.connect(
         // console.log('event target id ', event.target.id);
         return dispatch({
           type: 'CHANGE_SUGAR',
-          item: event.target.id,
+          item: event.target.parentElement.id,
           payload: event.target.value
         })
       }
