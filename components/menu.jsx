@@ -14,7 +14,6 @@ class Menu extends React.Component {
     // var array = Object.values(this.props.menu);
     // console.log(array);
 
-    console.log('rendesjdlöskdfjlöaskjdfr');
     console.log(this.props.menu);
     var array = Object.values(this.props.menu);
     console.log(array);
