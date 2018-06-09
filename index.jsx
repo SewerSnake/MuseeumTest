@@ -21,9 +21,9 @@ var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
 
 var reducer = function(state, action) {
-  console.log('action: ', action.payload);
-  console.log('state:', state);
-  console.log('state.menu:', state.menu);
+  // console.log('action: ', action.payload);
+  // console.log('state:', state);
+  // console.log('state.menu:', state.menu);
   switch (action.type) {
     case 'SET_MENU':
       return {
@@ -61,8 +61,9 @@ var reducer = function(state, action) {
       return {menu: newMenu1};
 
     case 'CHANGE_SUGAR':
+      console.log('action.payload in CHANGE_SUGAR:', action.payload);
       var newMenu = Object.assign({}, state.menu, {
-        [action.item]: Object.assign({}, state.menu[action.item], { sugar: true})
+        [action.item]: Object.assign({}, state.menu[action.item], { sugar: action.payload})
       })
 
       // VILL VI KÖRA UPP NYA MENYN GENAST TILL APIN ELLER KANSKE FÖRST I SISTA 'PLACE ORDER' SKEDET.

@@ -6,7 +6,8 @@ class MenuLabel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sugar: false,
+      // isChecked: false,
+      // sugar: this.props.item.sugar,
       orders: this.props.item.orders
     }
   }
@@ -19,10 +20,11 @@ class MenuLabel extends React.Component {
       margin: 0
     };
     return (
+      // <input value={this.state.sugar} type="checkbox" onClick={this.props.changeSugar}/>
       <p id={this.props.item.id} style={labelStyle} item={this.props.item}>{this.props.item.name}
         <br/>
         Add sugar
-        <input value={this.state.sugar} type="checkbox" onClick={this.props.changeSugar}/>
+        <input checked={this.props.isChecked} value={this.props.item.sugar} type="checkbox" onClick={this.props.changeSugar}/>
         <br/>
         Cups <input type="number" min="0" max="5" value={this.state.orders} onChange={this.props.addCups}/>
       </p>
@@ -32,8 +34,6 @@ class MenuLabel extends React.Component {
 
 var ConnectedMenuLabel = ReactRedux.connect(
   function(state) {
-    // console.log('state ', state);
-    // console.log('this props', this.props);
     return {
       sugar: state.sugar,
       cups: state.cups
@@ -41,11 +41,6 @@ var ConnectedMenuLabel = ReactRedux.connect(
   },
   function(dispatch) {
     return {
-      // updateDrink: function(event){
-      //   return dispatch({
-      //     type: 'UPDATE_DRINK'
-      //   })
-      // },
       addCups: function(event){
             console.log('ADDCUPS:');
         return dispatch({
@@ -55,12 +50,12 @@ var ConnectedMenuLabel = ReactRedux.connect(
         })
       },
       changeSugar: function(event){
-        console.log('sugar event target value ', event.target.value);
-        // console.log('event target id ', event.target.id);
+        // console.log('sugar event target value ', event.target.value);
+        console.log('sugar event target checked ', event.target.checked);
         return dispatch({
           type: 'CHANGE_SUGAR',
           item: event.target.parentElement.id,
-          payload: event.target.value
+          payload: event.target.checked
         })
       }
     }

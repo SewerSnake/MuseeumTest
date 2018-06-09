@@ -16,14 +16,12 @@ class Order extends React.Component{
         </tr>
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
         {drinksOrdered.map(function (drink) {
-          var sugar = '';
-          if (drink.sugar) {
-            sugar = 'yes';
-          }
+          var sugar = ''
+          // if (drink.sugar) { sugar = 'yes' } else { sugar = 'no' }
 
           return <tr key={drink.name}>
             <td>{drink.name}</td>
-            <td>{sugar}</td>
+            <td>{drink.sugar ? 'yes' : 'no'}</td>
             <td>{drink.cups} cups</td>
           </tr>;
         })}
