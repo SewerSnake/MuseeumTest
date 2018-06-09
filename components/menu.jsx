@@ -10,15 +10,6 @@ var Order = require('./order.jsx');
 var MENU_ID = 'fullmenu';
 class Menu extends React.Component {
   render() {
-    console.log('menu.jsx, thispropsmenu: ', this.props.menu); // { espresso: {}, ... }
-    // var array = Object.values(this.props.menu);
-    // console.log(array);
-    //
-    // console.log('rendesjdlöskdfjlöaskjdfr');
-    // console.log(this.props.menu);
-    // var array = Object.values(this.props.menu);
-    // console.log(array);
-
     return <div>
       <h1>Welcome to the Museum Cafe</h1><br />
       <p>Nothing better than a cup of coffee after fine art. Place your order here and pick it up at the museum café after your tour.</p><br />

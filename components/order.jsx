@@ -21,7 +21,7 @@ class Order extends React.Component{
           return <tr key={drink.name}>
             <td>{drink.name}</td>
             <td>{sugar}</td>
-            <td>{drink.cups}</td>
+            <td>{drink.cups} cups</td>
           </tr>;
         })}
       </tbody>
