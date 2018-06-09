@@ -61,7 +61,7 @@ var reducer = function(state, action) {
       return {menu: newMenu1};
 
     case 'CHANGE_SUGAR':
-      console.log('action.payload in CHANGE_SUGAR:', action.payload);
+      // console.log('action.payload in CHANGE_SUGAR:', action.payload);
       var newMenu = Object.assign({}, state.menu, {
         [action.item]: Object.assign({}, state.menu[action.item], { sugar: action.payload})
       })
