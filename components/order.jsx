@@ -5,32 +5,22 @@ var MenuCard = require('./menucard.jsx');
 var Redux = require('redux');
 var ReactRedux = require('react-redux');
 
-
 class Order extends React.Component{
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     orderedItems: []
-  //   }
-  //   this.componentDidMount = this.componentDidMount.bind(this);
-  //   this.componentDidUpdate = this.componentDidUpdate.bind(this);
-  // }
-  // componentDidMount() {
-  //   console.log('component did mount, Order');
-  // }
-  // componentDidUpdate() {
-  //   console.log('component did update');
-  // }
   render() {
     var drinksOrdered = Object.values(this.props.menu).filter((drink) => drink.cups > 0);
-
     return <table>
       <tbody>
+        <tr><th>YOUR CURRENT ORDER</th></tr>
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
         {drinksOrdered.map(function (drink) {
+          var sugar = '';
+          if (drink.sugar) {
+            sugar = 'yes';
+          }
+
           return <tr key={drink.name}>
             <td>{drink.name}</td>
-            <td>{(drink.sugar).toString()}</td>
+            <td>{sugar}</td>
             <td>{drink.cups}</td>
           </tr>;
         })}
