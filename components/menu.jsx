@@ -14,7 +14,7 @@ class Menu extends React.Component {
       <h1>Welcome to the Museum Cafe</h1><br />
       <p>Nothing better than a cup of coffee after fine art. Place your order here and pick it up at the museum café after your tour.</p><br />
       {Object.values(this.props.menu).map((item, index) => {
-      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={item.name} />
+      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={item.id} />
       })}<br /><br />
       <Order>{Order}</Order>
       </div>;
