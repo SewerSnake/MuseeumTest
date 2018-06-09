@@ -13,16 +13,20 @@ class Menu extends React.Component {
     console.log('menu.jsx, thispropsmenu: ', this.props.menu); // { espresso: {}, ... }
     // var array = Object.values(this.props.menu);
     // console.log(array);
+    //
+    // console.log('rendesjdlöskdfjlöaskjdfr');
+    // console.log(this.props.menu);
+    // var array = Object.values(this.props.menu);
+    // console.log(array);
 
-    console.log('rendesjdlöskdfjlöaskjdfr');
-    console.log(this.props.menu);
-    var array = Object.values(this.props.menu);
-    console.log(array);
-
-    // return <div>{menuItems}</div>;
-    return <div>{Object.values(this.props.menu).map((item, index) => {
+    return <div>
+      <h1>Welcome to the Museum Cafe</h1><br />
+      <p>Nothing better than a cup of coffee after fine art. Place your order here and pick it up at the museum café after your tour.</p><br />
+      {Object.values(this.props.menu).map((item, index) => {
       return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
-    })}<br /><Order>{Order}</Order></div>;
+      })}<br /><br />
+      <Order>{Order}</Order>
+      </div>;
   }
 }
 var ConnectedMenu = ReactRedux.connect(
