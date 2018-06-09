@@ -147,16 +147,16 @@ var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var 
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <Link to="/">Home</Link>
+            <Link exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</Link>
           </li>
           <li id="navLi">
-            <Link to="/art">Art</Link>
+            <Link exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</Link>
           </li>
           <li id="navLi">
-            <Link to="/planner">Planner</Link>
+            <Link exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</Link>
           </li>
           <li id="navLi">
-            <Link to="/cafe" onClick={fetchsomthing} >Cafe</Link>
+            <Link exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
           </li>
         </ul>
       </nav>

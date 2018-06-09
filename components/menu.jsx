@@ -14,9 +14,10 @@ class Menu extends React.Component {
     // var array = Object.values(this.props.menu);
     // console.log(array);
 
-    // var menuItems = Object.values(this.props.menu).map((item, index) => {
-    //   return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
-    // });
+    console.log('rendesjdlöskdfjlöaskjdfr');
+    console.log(this.props.menu);
+    var array = Object.values(this.props.menu);
+    console.log(array);
 
     // return <div>{menuItems}</div>;
     return <div>{Object.values(this.props.menu).map((item, index) => {
