@@ -5,7 +5,7 @@ class MenuSquare extends React.Component {
     var squareStyle = {
       height: 110,
       backgroundColor: this.props.color,
-      backgroundImage: "url(Cafe/"+this.props.image+")",
+      backgroundImage: "url(Cafe/"+this.props.image+".jpeg)",
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center'
