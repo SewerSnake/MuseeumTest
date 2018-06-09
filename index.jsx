@@ -29,6 +29,26 @@ var reducer = function(state, action) {
       return {
         menu: action.payload
       };
+
+    case 'PLACE_ORDER':  //Update single drink
+  //    var ourDrinks = Object.values(state.menu).filter((drink) => drink.cups > 0)
+
+      // VILL VI KÖRA UPP NYA MENYN GENAST TILL APIN ELLER KANSKE FÖRST I SISTA 'PLACE ORDER' SKEDET.
+      fetch('http://cities.jonkri.se/'+MENU_ID, {
+        body: JSON.stringify({cafeMenu: state.menu}),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'PUT'
+      }).then(response => response.json())
+        .then(result => {
+          console.log('PUT result: ', result);
+      //    store.dispatch({ payload: result, type: 'UPDATE_DRINK' });
+        })
+
+      return {
+        menu: state.menu //
+      };
     case 'UPDATE_DRINK':  //Update single drink
       return {
         //

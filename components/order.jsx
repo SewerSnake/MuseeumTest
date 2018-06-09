@@ -11,6 +11,7 @@ class Order extends React.Component{
     return <table>
       <tbody>
         <tr><th>YOUR CURRENT ORDER</th></tr>
+
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
         {drinksOrdered.map(function (drink) {
           var sugar = '';
@@ -24,6 +25,7 @@ class Order extends React.Component{
             <td>{drink.cups} cups</td>
           </tr>;
         })}
+        <input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
       </tbody>
     </table>
   }
@@ -33,8 +35,14 @@ var ConnectedOrder = ReactRedux.connect(
   function (state) {
     return { menu: state.menu };
   },
-  function() {
-    return {};
+  function(dispatch){
+    return {
+      placeOrder: function() {
+        return dispatch({
+          type: 'PLACE_ORDER'
+        })
+      }
+    };
   })(Order);
 
 module.exports = ConnectedOrder;
