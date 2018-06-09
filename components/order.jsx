@@ -15,21 +15,25 @@ class Order extends React.Component{
   //   this.componentDidMount = this.componentDidMount.bind(this);
   //   this.componentDidUpdate = this.componentDidUpdate.bind(this);
   // }
-  componentDidMount() {
-    console.log('component did mount, Order');
-  }
-  componentDidUpdate() {
-    console.log('component did update');
-  }
+  // componentDidMount() {
+  //   console.log('component did mount, Order');
+  // }
+  // componentDidUpdate() {
+  //   console.log('component did update');
+  // }
   render() {
     var drinksOrdered = Object.values(this.props.menu).filter((drink) => drink.cups > 0);
 
     return <table>
       <tbody>
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
-        <td>{drinksOrdered.map(drink => <tr key={drink.name}>{drink.name}</tr>)}</td>
-        <td>Sugar yes/no</td>
-        <td>2</td>
+        {drinksOrdered.map(function (drink) {
+          return <tr key={drink.name}>
+            <td>{drink.name}</td>
+            <td>{(drink.sugar).toString()}</td>
+            <td>{drink.cups}</td>
+          </tr>;
+        })}
       </tbody>
     </table>
   }
