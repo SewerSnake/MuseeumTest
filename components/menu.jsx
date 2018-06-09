@@ -21,7 +21,7 @@ class Menu extends React.Component {
 
     // return <div>{menuItems}</div>;
     return <div>{Object.values(this.props.menu).map((item, index) => {
-      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={index} />
+      return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={item.name} />
     })}<br /><Order>{Order}</Order></div>;
   }
 }
