@@ -18,7 +18,7 @@ class MenuCard extends React.Component {
     return (
       <div style={cardStyle}>
         <MenuSquare color={this.props.color} image={this.props.image}/>
-        <MenuLabel item={this.props.item} colorL={this.props.colorL} name={this.props.name}/>
+        <MenuLabel id={this.props.item.id} item={this.props.item} colorL={this.props.colorL} name={this.props.name}/>
       </div>
     );
   }

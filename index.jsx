@@ -20,18 +20,63 @@ var LogoLetter2 = require('./components/logoletter2.jsx')
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
 
-
 var reducer = function(state, action) {
   console.log('action: ', action.payload);
+  console.log('state:', state);
+  console.log('state.menu:', state.menu);
   switch (action.type) {
-    case 'SET_MENU':
+    case 'SET_MENU':  //Fetch menu from API
       return {
         menu: action.payload
       };
+    case 'UPDATE_DRINK':  //Update single drink
+      return {
+        //
+      };
+    case 'ADD_CUPS':
+      return {
+        cups: action.payload
+      };
+    case 'CHANGE_SUGAR':
+      // console.log('action.item:', action.item); // espresso
+      // console.log('state.menu.action.item:', state.menu[action.item]); // {espresso..}
+      // console.log('action.payload', action.payload); // on
+      var id = action.item;   //sparar tex 'espresso' som id-key
+      var newDrink = Object.assign({}, state.menu[action.item], { //klonar drink som skall ändras
+        sugar: true});
+      // console.log('new drink ', newDrink);
+      var newMenu = Object.assign({}, state.menu, { // klonar menyn o modifierar med ny drink
+        [id]: newDrink
+      })
+      console.log('newMenu:', newMenu);
+
+      // VILL VI KÖRA UPP NYA MENYN GENAST TILL APIN ELLER KANSKE FÖRST I SISTA 'PLACE ORDER' SKEDET.
+      // fetch('http://cities.jonkri.se/'+'fullmenu', {
+      //   body: JSON.stringify({cafeMenu: newMenu}),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   method: 'PUT'
+      // }).then(response => response.json())
+      //   .then(result => {
+      //     console.log('PUT result: ', result);
+      //     store.dispatch({ payload: result, type: 'UPDATE_DRINK' });
+      //   })
+
+      return {menu: newMenu}; // Returnerar nya menyn till state
+
     default: return state;
   }
+
 };
-var store = Redux.createStore(reducer, { menu: {}, id: 'fullmenu'});
+// var store = Redux.createStore(reducer, { order: [], menu: {}, item: {}, sugar: false, cups: 0, menuId: 'fullmenu'});
+var store = Redux.createStore(reducer,
+  {
+    menu: {},
+    // drink: { sugar: false, cups: 0},
+    menuId: 'fullmenu'
+  }
+);
 
 ReactDOM.render(
   <div>
@@ -93,41 +138,9 @@ function fetchsomthing() {
         })
       }
     })
-
 }
 
-
-
-  // var homePageContent = document.querySelector(".content-wrap");
-// 1. Card component with 3parts
-
-// ReactDOM.render (
-//   <div>
-//     <Card color="Webpack" color="#FFA737" image={'media/webpack.svg'}/>
-//     <Card color="#FFA737" colorL="#2B2B2B" name="React" image={'media/React-icon.svg'}/>
-//     <Card name="Jsx" image={'media/jsx.png'}/>
-//   </div>,
-//   homePageContent
-// );
-
-    // function updateOrder(){
-    //   fetch('http://cities.jonkri.se/'+MENU_ID, {
-    //     body: JSON.stringify({ EDITEDMENU }),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     method: 'PUT'
-    //   }).then(response => response.json())
-    //     .then(result => {
-    //       console.log(result);
-    //     });
-    // }
-
-  //<<< MILJA KOD SLUT
-
-
-
-  var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
+var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
 <Provider store={store}>
   <HashRouter>
     <div>
@@ -156,57 +169,62 @@ function fetchsomthing() {
   </HashRouter>
 </Provider>, document.getElementById('box2'));
 
-
-  //CAFE
   var cafeMenu =
   {
     espresso: {
+      id: 'espresso',
       name: "Espresso",
       price: 2.10,
       sugar: false,
       cups: 0
     },
     dripcoffee: {
+      id: 'dripcoffee',
       name: "Drip Coffee",
       price: 2.20,
       sugar: false,
       cups: 0
     },
     coldbrew: {
+      id: 'coldbrew',
       name: "Cold Brew",
       price: 3.00,
       sugar: false,
       cups: 0
     },
     icetea: {
+      id: 'icetea',
       name: "Ice Tea",
       price: 2.95,
       sugar: false,
       cups: 0
     },
     hottea: {
+      id: 'hottea',
       name: "Hot Tea",
       price: 2.95,
       sugar: false,
       cups: 0
     },
     cappuccino: {
+      id: 'cappuccino',
       name: "Cappuccino",
       price: 2.85,
       sugar: false,
       cups: 0
     },
     latte: {
+      id: 'latte',
       name: "Latte",
       price: 2.95,
       sugar: false,
       cups: 0
     },
     americano: {
+      id: 'americano',
       name: "Americano",
       price: 2.40,
       sugar: false,
       cups: 0
     }
   };
-  // Menu Card component

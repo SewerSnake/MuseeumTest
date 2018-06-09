@@ -1,4 +1,6 @@
-var React = require('react')
+var React = require('react');
+var Redux = require('redux');
+var ReactRedux = require('react-redux');
 
 class MenuLabel extends React.Component {
   constructor(props) {
@@ -7,21 +9,8 @@ class MenuLabel extends React.Component {
       sugar: false,
       orders: this.props.item.orders
     }
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleClick(event) {
-    this.setState({ sugar: this.props.item.sugar });
-    this.props.item.sugar = !this.props.item.sugar;
-  }
-  handleChange(event){
-    console.log('target value ' + event.target.value); // 1
-    this.setState({ orders: event.target.value}); // skall vara 1
-    console.log('state value ' + this.state.orders);
-    this.props.item.orders = event.target.value;
   }
   render() {
-    console.log(this.props.item);
     var labelStyle = {
       fontWeight: "bold",
       backgroundColor: this.props.colorL,
@@ -30,15 +19,49 @@ class MenuLabel extends React.Component {
       margin: 0
     };
     return (
-      <p style={labelStyle} item={this.props.item}>{this.props.name.toUpperCase()}
+      <p style={labelStyle} item={this.props.item}>{this.props.item.name}
         <br/>
         Add sugar
-        <input type="checkbox" onClick={this.handleClick}/>
+        <input id={this.props.item.id} value={this.state.sugar} type="checkbox" onClick={this.props.changeSugar}/>
         <br/>
-        Cups <input type="number" min="0" max="5" value={this.state.orders} onChange={this.handleChange}/>
+        Cups <input type="number" min="0" max="5" value={this.state.orders} onChange={this.props.addCups}/>
       </p>
     );
   }
 }
 
-module.exports = MenuLabel;
+var ConnectedMenuLabel = ReactRedux.connect(
+  function(state) {
+    // console.log('state ', state);
+    // console.log('this props', this.props);
+    return {
+      sugar: state.sugar,
+      cups: state.cups
+    }
+  },
+  function(dispatch) {
+    return {
+      updateDrink: function(event){
+        return dispatch({
+          type: 'UPDATE_DRINK'
+        })
+      },
+      addCups: function(event){
+        return dispatch({
+          type: 'ADD_CUPS',
+          payload: event.target.value
+        })
+      },
+      changeSugar: function(event){
+        // console.log('event target value ', event.target.value);
+        // console.log('event target id ', event.target.id);
+        return dispatch({
+          type: 'CHANGE_SUGAR',
+          item: event.target.id,
+          payload: event.target.value
+        })
+      }
+    }
+  })(MenuLabel);
+
+module.exports = ConnectedMenuLabel;
