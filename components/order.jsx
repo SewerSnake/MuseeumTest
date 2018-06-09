@@ -7,15 +7,37 @@ var ReactRedux = require('react-redux');
 
 
 class Order extends React.Component{
+  constructor() {
+    super();
+    this.state = {
+      customerOrder: ''
+    }
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+  }
   componentDidMount() {
     console.log('component did mount, Order');
-    console.log('Order.jsx: this.props.menu', this.props.menu);
+    // console.log('Order.jsx: this.props.menu', this.props.menu);
+    this.setState = ({order: 'didmount'});
+    console.log('customerOrder ', this.state.customerOrder);
+  }
+  componentDidUpdate() {
+    console.log('component did update');
     var values = Object.values(this.props.menu);
-    console.log('values', Object.values(this.props.menu));
-    console.log(values.filter((drink) => drink.sugar));
+    console.log('update, values', Object.values(this.props.menu));
+    var drinksWithSugar = values.filter((drink) => drink.sugar);
+    console.log(drinksWithSugar);
+    this.setState = ({ customerOrder: 'sugar'});
   }
   render() {
-    return <p>Your shopping card.</p>
+    return <table>
+      <tbody>
+        <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
+        <td>Drip Coffee</td>
+        <td>{this.state.customerOrder}</td>
+        <td>2</td>
+      </tbody>
+    </table>
   }
 }
 
