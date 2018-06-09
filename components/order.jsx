@@ -8,7 +8,7 @@ var ReactRedux = require('react-redux');
 class Order extends React.Component{
   render() {
     var drinksOrdered = Object.values(this.props.menu).filter((drink) => drink.cups > 0);
-    return <table>
+    return <div><table>
       <tbody>
         <tr><th>YOUR CURRENT ORDER</th></tr>
 
@@ -25,9 +25,10 @@ class Order extends React.Component{
             <td>{drink.cups} cups</td>
           </tr>;
         })}
-        <input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
       </tbody>
     </table>
+    <input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
+    </div>
   }
 }
 

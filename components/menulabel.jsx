@@ -41,11 +41,11 @@ var ConnectedMenuLabel = ReactRedux.connect(
   },
   function(dispatch) {
     return {
-      updateDrink: function(event){
-        return dispatch({
-          type: 'UPDATE_DRINK'
-        })
-      },
+      // updateDrink: function(event){
+      //   return dispatch({
+      //     type: 'UPDATE_DRINK'
+      //   })
+      // },
       addCups: function(event){
             console.log('ADDCUPS:');
         return dispatch({
@@ -55,7 +55,7 @@ var ConnectedMenuLabel = ReactRedux.connect(
         })
       },
       changeSugar: function(event){
-        // console.log('event target value ', event.target.value);
+        console.log('sugar event target value ', event.target.value);
         // console.log('event target id ', event.target.id);
         return dispatch({
           type: 'CHANGE_SUGAR',
