@@ -12,7 +12,7 @@ function createImage(webImage) {
       parrotBox.style.backgroundImage = image;
     }}></div>
   } else {
-    return <p>No image available</p>
+    return <p><strong>No image available</strong></p>
   }
 }
 
@@ -64,7 +64,6 @@ class ArtGallery extends React.Component {
         return response.json();
       })
       .then(function(result) {
-        //console.log(result);
 
         var artObjects = result.artObjects;
 
@@ -80,9 +79,9 @@ class ArtGallery extends React.Component {
 
   render() {
     if (!this.state.artArray) {
-      return <p>Loading...</p>
+      return <p><strong>Loading...</strong></p>
     } else if (this.state.requestFailed || this.state.artArray.length == 0) {
-      return <p>Could not find what you seek</p>
+      return <p><strong>Could not find what you seek</strong></p>
     } else {
 
       return <div id="artistArtGallery">{

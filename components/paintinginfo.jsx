@@ -21,7 +21,7 @@ class PaintingInfo extends React.Component {
         return response.json();
       })
       .then(function(result) {
-        //console.log(result);
+
         var artObject = result.artObject;
 
         this.setState({
@@ -37,20 +37,20 @@ class PaintingInfo extends React.Component {
 
   render() {
     if (this.state.requestFailed) {
-      return <p>Failed to get painting</p>
+      return <p><strong>Failed to get painting</strong></p>
     } else {
       var title = this.state.title;
       var maker = this.state.maker;
       var location = this.state.locationOfPiece;
       var description = this.state.plaqueDescription;
       return <p>
-        {'Title: ' + (title ? title:'Unavailable')}
+        <strong>Title: </strong>{(title ? title:'Unavailable')}
         <br/>
-        {'Maker: ' + (maker ? maker:'Unavailable')}
+        <strong>Maker: </strong>{(maker ? maker:'Unavailable')}
         <br/>
-        {'Where to find: ' + (location ? location:'Unavailable')}
+        <strong>Where to find: </strong>{(location ? location:'Unavailable')}
         <br/>
-        {'Description: ' + (description ? description:'Unavailable')}
+        <strong>Description: </strong>{(description ? description:'Unavailable')}
       </p>
     }
   }
