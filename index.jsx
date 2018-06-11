@@ -98,16 +98,16 @@ ReactDOM.render(
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <Link exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</Link>
+            <Link to="/" style={{borderBottom: "1px solid black"}}>Home</Link>
           </li>
           <li id="navLi">
-            <Link exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</Link>
+            <Link to="/art" style={{borderBottom: "1px solid black"}}>Art</Link>
           </li>
           <li id="navLi">
-            <Link exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</Link>
+            <Link to="/planner" style={{borderBottom: "1px solid black"}}>Planner</Link>
           </li>
           <li id="navLi">
-            <Link exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
+            <Link to="/cafe" style={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
           </li>
         </ul>
       </nav>
