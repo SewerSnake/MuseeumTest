@@ -25,7 +25,7 @@ var destination2 = document.querySelector(".logoS");
 
 var store = Redux.createStore(reducer,
   {
-    menu: { suger: false, cups: 0},
+    menu: { sugar: false, cups: 0},
     menuId: 'fullmenu',
   }
 );
