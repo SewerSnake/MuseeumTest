@@ -7,7 +7,7 @@ class ColorSquare extends React.Component {
       backgroundColor: this.props.color
     };
     return (
-      <div style={squareStyle}></div>
+      <div onClick={this.props.onClick} style={squareStyle}></div>
     );
   }
 }

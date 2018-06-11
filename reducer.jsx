@@ -39,6 +39,16 @@ var reducer = function(state, action) {
       return {
         menu: newMenu
       };
+    //TEST MILJA START
+    case 'SAVE_COLOR':
+      var newArray = state.mycolor.slice();
+      newArray.splice(0, 0, action.payload);
+      if (newArray.length > 4) {
+        var shortened = newArray.splice(0, 4);
+        return { menu: state.menu, menuId: state.menuId, mycolor: shortened };
+      }
+      return { menu: state.menu, menuId: state.menuId, mycolor: newArray };
+    //TEST MILJA END
     default: return state;
   }
 };

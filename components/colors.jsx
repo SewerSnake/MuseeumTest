@@ -1,4 +1,5 @@
 var React = require('react')
+var ReactRedux = require('react-redux');
 var ColorCard = require('./colorCard.jsx')
 var destination = document.querySelector("#container");
 
@@ -24,7 +25,6 @@ constructor(props) {
   this.shuffle = this.shuffle.bind(this)
 }
 
-
 shuffle() {
   console.log('REFRESH');
   this.setState({ cardList: showCard()});
@@ -32,6 +32,7 @@ shuffle() {
 
   render() {
     console.log(this.props);
+    console.log('mycolorrr: ', this.props.c);
     return <section id="section-b">
       <div className="palette-wrapper">
           <div className="console">
@@ -41,10 +42,10 @@ shuffle() {
             <div className="input-color-container">
               <input id="input-color" className="input-color" type="color"></input>
               </div>
-            <ColorCard color="#F9C240" heightColorSqr='40px'/>
-            <ColorCard color="#F9C240" heightColorSqr='40px'/>
-            <ColorCard color="#F9C240" heightColorSqr='40px'/>
-            <ColorCard color="#F9C240" heightColorSqr='40px'/>
+            <ColorCard color={this.props.c ? this.props.c[0] : '#000000'} heightColorSqr='40px'/>
+            <ColorCard color={this.props.c ? this.props.c[1] : '#000000'} heightColorSqr='40px'/>
+            <ColorCard color={this.props.c ? this.props.c[2] : '#000000'} heightColorSqr='40px'/>
+            <ColorCard color={this.props.c ? this.props.c[3] : '#000000'} heightColorSqr='40px'/>
           </div>
         </div>
       <div id="colorwall">
@@ -55,5 +56,18 @@ shuffle() {
   }
 }
 
+// <ColorCard color="#F9C240" heightColorSqr='40px'/>
+// <ColorCard color="#F9C240" heightColorSqr='40px'/>
+// <ColorCard color="#F9C240" heightColorSqr='40px'/>
+// <ColorCard color="#F9C240" heightColorSqr='40px'/>
 
-module.exports = Colors;
+// MILJA TEST START
+var ConnectedColors = ReactRedux.connect(
+  function(state) {
+    console.log('state.mycolorrr: ', state.mycolor);
+    return { c: state.mycolor };
+  })(Colors);
+// MILJA TEST END
+
+// module.exports = Colors;
+module.exports = ConnectedColors;

@@ -27,6 +27,8 @@ var store = Redux.createStore(reducer,
   {
     menu: { sugar: false, cups: 0},
     menuId: 'fullmenu',
+    //TEST
+    mycolor: ['#000000']
   }
 );
 
@@ -73,10 +75,6 @@ function fetchsomthing() {
         });
       } else {
         console.log('Found old menu, resetting');
-        // DELETE EDITED MENU
-        // fetch('http://cities.jonkri.se/'+MENU_ID, {
-        //   method: 'DELETE'
-        // })
         fetch('http://cities.jonkri.se/' + MENU_ID, {
           method: 'DELETE'
         }).then(result => {
@@ -100,6 +98,7 @@ ReactDOM.render(
   <Provider store={store}>
   <HashRouter>
     <div>
+      {/*<MyFancyReduxConnectedNavigation />  Kopplas till state*/}
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
