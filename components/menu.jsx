@@ -4,7 +4,6 @@ var { Provider } = require('react-redux');
 var MenuCard = require('./menucard.jsx');
 var Redux = require('redux');
 var ReactRedux = require('react-redux');
-
 var Order = require('./order.jsx');
 
 var MENU_ID = 'fullmenu';
@@ -34,55 +33,4 @@ var ConnectedMenu = ReactRedux.connect(
     };
   })(Menu);
 
-var cafeMenu =
-{
-  espresso: {
-    name: "Espresso",
-    price: 2.10,
-    sugar: false,
-    cups: 0
-  },
-  dripcoffee: {
-    name: "Drip Coffee",
-    price: 2.20,
-    sugar: false,
-    cups: 0
-  },
-  coldbrew: {
-    name: "Cold Brew",
-    price: 3.00,
-    sugar: false,
-    cups: 0
-  },
-  icetea: {
-    name: "Ice Tea",
-    price: 2.95,
-    sugar: false,
-    cups: 0
-  },
-  hottea: {
-    name: "Hot Tea",
-    price: 2.95,
-    sugar: false,
-    cups: 0
-  },
-  cappuccino: {
-    name: "Cappuccino",
-    price: 2.85,
-    sugar: false,
-    cups: 0
-  },
-  latte: {
-    name: "Latte",
-    price: 2.95,
-    sugar: false,
-    cups: 0
-  },
-  americano: {
-    name: "Americano",
-    price: 2.40,
-    sugar: false,
-    cups: 0
-  }
-};
 module.exports = ConnectedMenu;

@@ -18,6 +18,7 @@ var Colors = require('./components/colors.jsx');
 var LogoLetter = require('./components/logoletter.jsx')
 var LogoLetter2 = require('./components/logoletter2.jsx')
 var reducer = require('./reducer.jsx');
+var cafeMenu = require('./cafeMenu.jsx');
 
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
@@ -57,9 +58,10 @@ function fetchsomthing() {
       var array = result;
       let object = array.find(o => o.id === MENU_ID);
       if (object === undefined) {
+        var menu = cafeMenu.getMenu();
         console.log('Menu not found, POSTing')
         fetch('http://cities.jonkri.se/', {
-          body: JSON.stringify({cafeMenu, id: MENU_ID}),
+          body: JSON.stringify({ menu, id: MENU_ID}),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -78,7 +80,7 @@ function fetchsomthing() {
         //   method: 'DELETE'
         // })
         fetch('http://cities.jonkri.se/' + MENU_ID, {
-          body: JSON.stringify({cafeMenu, id: MENU_ID}),
+          body: JSON.stringify({menu, id: MENU_ID}),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -124,63 +126,3 @@ ReactDOM.render(
     </div>
   </HashRouter>
 </Provider>, document.getElementById('box2'));
-
-  var cafeMenu =
-  {
-    espresso: {
-      id: 'espresso',
-      name: "Espresso",
-      price: 2.10,
-      sugar: false,
-      cups: 0
-    },
-    dripcoffee: {
-      id: 'dripcoffee',
-      name: "Drip Coffee",
-      price: 2.20,
-      sugar: false,
-      cups: 0
-    },
-    coldbrew: {
-      id: 'coldbrew',
-      name: "Cold Brew",
-      price: 3.00,
-      sugar: false,
-      cups: 0
-    },
-    icetea: {
-      id: 'icetea',
-      name: "Ice Tea",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    hottea: {
-      id: 'hottea',
-      name: "Hot Tea",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    cappuccino: {
-      id: 'cappuccino',
-      name: "Cappuccino",
-      price: 2.85,
-      sugar: false,
-      cups: 0
-    },
-    latte: {
-      id: 'latte',
-      name: "Latte",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    americano: {
-      id: 'americano',
-      name: "Americano",
-      price: 2.40,
-      sugar: false,
-      cups: 0
-    }
-  };
