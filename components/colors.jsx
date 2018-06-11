@@ -16,11 +16,26 @@ function showCard() {
 
 
 class Colors extends React.Component {
+constructor(props) {
+  super(props)
+  this.state = {
+    cardList: showCard()
+  };
+  this.shuffle = this.shuffle.bind(this)
+}
+
+
+shuffle() {
+  console.log('REFRESH');
+  this.setState({ cardList: showCard()});
+}
+
   render() {
+    console.log(this.props);
     return <section id="section-b">
       <div className="palette-wrapper">
           <div className="console">
-            <button className="button button1">Reload</button>
+            <button className="button button1" onClick={this.shuffle} >Reload</button>
           </div>
           <div id="chosen-colors">
             <div className="input-color-container">
@@ -33,7 +48,7 @@ class Colors extends React.Component {
           </div>
         </div>
       <div id="colorwall">
-          {showCard()}
+          {this.state.cardList}
       </div>
 
     </section>

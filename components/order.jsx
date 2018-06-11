@@ -14,6 +14,8 @@ class Order extends React.Component{
         <tr>
           <th>YOUR CURRENT ORDER</th>
           <th>TOTAL: { total.toFixed(2) } euros</th>
+          <th><input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
+          </th>
         </tr>
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>
         {drinksOrdered.map(function (drink) {
@@ -25,7 +27,6 @@ class Order extends React.Component{
         })}
       </tbody>
     </table>
-    <input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
     </div>
   }
 }
