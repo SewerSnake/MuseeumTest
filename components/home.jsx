@@ -20,6 +20,13 @@ class Home extends React.Component {
                         color="lightgrey"
                         colorLbl="#FFC983"
                         heightLbl="20px"
+                        name="Redux"
+                        image={'media/redux.png'}/>  
+                      <Card
+                        heightSqr="100px"
+                        color="lightgrey"
+                        colorLbl="#FFC983"
+                        heightLbl="20px"
                         name="Webpack"
                         image={'media/webpack.svg'}/>
                       <Card
