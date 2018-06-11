@@ -24,7 +24,7 @@ var ConnectedMenu = ReactRedux.connect(
   function(state) {
     return { menu: state.menu };
   },
-  function(dispatch){
+  (dispatch) => {
     return {
       addMenu: function() {
         return dispatch({

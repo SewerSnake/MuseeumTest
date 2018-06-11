@@ -17,16 +17,13 @@ var Menu = require('./components/menu.jsx');
 var LogoLetter = require('./components/logoletter.jsx')
 var LogoLetter2 = require('./components/logoletter2.jsx')
 
-var Colors = require('./components/colors.jsx')
-var ColorCard = require('./components/colorCard.jsx')
-
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
 
 var reducer = function(state, action) {
-  // console.log('action: ', action.payload);
-  // console.log('state:', state);
-  // console.log('state.menu:', state.menu);
+  console.log('action: ', action.payload);
+  console.log('state:', state);
+  console.log('state.menu:', state.menu);
   switch (action.type) {
     case 'SET_MENU':
       return {
@@ -64,9 +61,8 @@ var reducer = function(state, action) {
       return {menu: newMenu1};
 
     case 'CHANGE_SUGAR':
-      // console.log('action.payload in CHANGE_SUGAR:', action.payload);
       var newMenu = Object.assign({}, state.menu, {
-        [action.item]: Object.assign({}, state.menu[action.item], { sugar: action.payload})
+        [action.item]: Object.assign({}, state.menu[action.item], { sugar: true})
       })
 
       // VILL VI KÖRA UPP NYA MENYN GENAST TILL APIN ELLER KANSKE FÖRST I SISTA 'PLACE ORDER' SKEDET.
@@ -155,32 +151,29 @@ function fetchsomthing() {
     })
 }
 
-var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink; var Route = ReactRouterDOM.Route; ReactDOM.render(
-<Provider store={store}>
+var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route;
+ReactDOM.render(
+  <Provider store={store}>
   <HashRouter>
     <div>
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <NavLink exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</NavLink>
+            <Link exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</Link>
           </li>
           <li id="navLi">
-            <NavLink exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</NavLink>
+            <Link exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</Link>
           </li>
           <li id="navLi">
-            <NavLink to="/colors" activeStyle={{borderBottom: "1px solid black"}}>Colors</NavLink>
+            <Link exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</Link>
           </li>
           <li id="navLi">
-            <NavLink exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
-          </li>
-          <li id="navLi">
-            <NavLink exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
+            <Link exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
           </li>
         </ul>
       </nav>
       <Route exact={true} component={Home} path="/"   />
       <Route exact={true} component={Art} path="/art"   />
-      <Route exact={true} component={Colors} path="/colors" />
       <Route component={ArtGallery} path="/art/:artistName" />
       <Route exact={true} component={Planner} path="/planner" />
       <Route component={Menu} path="/cafe" />

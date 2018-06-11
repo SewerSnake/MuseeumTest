@@ -32,28 +32,23 @@ class MenuLabel extends React.Component {
 }
 
 var ConnectedMenuLabel = ReactRedux.connect(
-  function(state) {
-    return {
-      sugar: state.sugar,
-      cups: state.cups
-    }
+  (state) => { ({ sugar: state.sugar, cups: state.cups })
   },
-  function(dispatch) {
+  (dispatch) => {
     return {
-      addCups: function(event){
-            console.log('ADDCUPS:');
-        return dispatch({
+      addCups: (event) => {
+           dispatch({
           type: 'ADD_CUPS',
           item: event.target.parentElement.id,
           payload: event.target.value
         })
       },
-      changeSugar: function(event){
-        return dispatch({
+      changeSugar: (event) => {
+         (dispatch({
           type: 'CHANGE_SUGAR',
           item: event.target.parentElement.id,
           payload: event.target.checked
-        })
+        }))
       }
     }
   })(MenuLabel);

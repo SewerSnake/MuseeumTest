@@ -36,7 +36,7 @@ var ConnectedOrder = ReactRedux.connect(
   },
   function(dispatch){
     return {
-      placeOrder: function() {
+      placeOrder: () => {
         return dispatch({
           type: 'PLACE_ORDER'
         })

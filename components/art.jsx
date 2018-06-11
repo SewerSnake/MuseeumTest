@@ -15,7 +15,7 @@ class Art extends React.Component {
       ['FlorisClaesz','Floris Claesz']]
 
 
-    var renderValues = artists.map(function (value) {
+    var renderValues = artists.map(value => {
       var img = "Painters/"+value[0] + ".jpeg";
       var routeValue = "art/"+value[0];
       return <Link to={routeValue} key={value[0]} >
@@ -31,7 +31,6 @@ class Art extends React.Component {
       return <section id="artList" >
       <h1>Artists</h1>
       <div>{renderValues}</div>
-
       </section>
   }
 }
