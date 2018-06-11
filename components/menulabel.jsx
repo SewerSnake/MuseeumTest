@@ -6,8 +6,6 @@ class MenuLabel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // isChecked: false,
-      // sugar: this.props.item.sugar,
       orders: this.props.item.orders
     }
   }

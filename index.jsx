@@ -67,27 +67,26 @@ function fetchsomthing() {
           .then(result => {
           console.log('POST result', result);
           var object = result.find(o => o.id === MENU_ID);
-          console.log('object:', object);
           store.dispatch({ type: 'SET_MENU', payload: object });
-        })
-      }  else {
+        });
+      } else {
         console.log('Found old menu, resetting');
-        // DELETE EDITED MENU
-        // fetch('http://cities.jonkri.se/'+MENU_ID, {
-        //   method: 'DELETE'
-        // })
         fetch('http://cities.jonkri.se/' + MENU_ID, {
-          body: JSON.stringify({cafeMenu, id: MENU_ID}),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'PUT'})
-        .then(response => response.json()).then(result => {
-          console.log('PUT result', result); //Get ett {menu:, id: }
-          store.dispatch({ type: 'SET_MENU', payload: result.cafeMenu })
-        })
+          method: 'DELETE'
+        }).then(result => {
+            console.log('Deleted');
+            fetch('http://cities.jonkri.se/', {
+              body: JSON.stringify({cafeMenu, id: MENU_ID}),
+              headers: {'Content-Type': 'application/json' },
+              method: 'POST'})
+              .then(response => response.json())
+              .then(result => {
+                console.log('POST result', result);
+                store.dispatch({ type: 'SET_MENU', payload: cafeMenu })
+              })
+          })
       }
-    })
+    });
 }
 
 var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route;
