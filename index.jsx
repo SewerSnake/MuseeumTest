@@ -14,9 +14,11 @@ var Card = require('./components/card.jsx');
 var Art = require('./components/art.jsx');
 var Planner = require('./components/planner.jsx');
 var Menu = require('./components/menu.jsx');
+var Colors = require('./components/colors.jsx');
 var LogoLetter = require('./components/logoletter.jsx')
 var LogoLetter2 = require('./components/logoletter2.jsx')
 var reducer = require('./reducer.jsx');
+var cafeMenu = require('./cafeMenu.jsx');
 
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
@@ -56,9 +58,10 @@ function fetchsomthing() {
       var array = result;
       let object = array.find(o => o.id === MENU_ID);
       if (object === undefined) {
+        var menu = cafeMenu.getMenu();
         console.log('Menu not found, POSTing')
         fetch('http://cities.jonkri.se/', {
-          body: JSON.stringify({cafeMenu, id: MENU_ID}),
+          body: JSON.stringify({ menu, id: MENU_ID}),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -72,6 +75,7 @@ function fetchsomthing() {
       } else {
         console.log('Found old menu, resetting');
         fetch('http://cities.jonkri.se/' + MENU_ID, {
+<<<<<<< HEAD
           method: 'DELETE'
         }).then(result => {
             console.log('Deleted');
@@ -85,11 +89,22 @@ function fetchsomthing() {
                 store.dispatch({ type: 'SET_MENU', payload: cafeMenu })
               })
           })
+=======
+          body: JSON.stringify({menu, id: MENU_ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'PUT'})
+        .then(response => response.json()).then(result => {
+          console.log('PUT result', result); //Get ett {menu:, id: }
+          store.dispatch({ type: 'SET_MENU', payload: result.cafeMenu })
+        })
+>>>>>>> b54c39d9cd309584bb159ecf0089873386f03fc5
       }
     });
 }
 
-var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route;
+var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink; var Route = ReactRouterDOM.Route;
 ReactDOM.render(
   <Provider store={store}>
   <HashRouter>
@@ -97,84 +112,28 @@ ReactDOM.render(
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <Link exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</Link>
+            <NavLink exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</Link>
+            <NavLink to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</Link>
+            <NavLink to="/colors" activeStyle={{borderBottom: "1px solid black"}}>Colors</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
+            <NavLink to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
+          </li>
+          <li id="navLi">
+            <NavLink to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
           </li>
         </ul>
       </nav>
       <Route exact={true} component={Home} path="/"   />
       <Route exact={true} component={Art} path="/art"   />
+      <Route exact={true} component={Colors} path="/colors" />
       <Route component={ArtGallery} path="/art/:artistName" />
       <Route exact={true} component={Planner} path="/planner" />
       <Route component={Menu} path="/cafe" />
     </div>
   </HashRouter>
 </Provider>, document.getElementById('box2'));
-
-  var cafeMenu =
-  {
-    espresso: {
-      id: 'espresso',
-      name: "Espresso",
-      price: 2.10,
-      sugar: false,
-      cups: 0
-    },
-    dripcoffee: {
-      id: 'dripcoffee',
-      name: "Drip Coffee",
-      price: 2.20,
-      sugar: false,
-      cups: 0
-    },
-    coldbrew: {
-      id: 'coldbrew',
-      name: "Cold Brew",
-      price: 3.00,
-      sugar: false,
-      cups: 0
-    },
-    icetea: {
-      id: 'icetea',
-      name: "Ice Tea",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    hottea: {
-      id: 'hottea',
-      name: "Hot Tea",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    cappuccino: {
-      id: 'cappuccino',
-      name: "Cappuccino",
-      price: 2.85,
-      sugar: false,
-      cups: 0
-    },
-    latte: {
-      id: 'latte',
-      name: "Latte",
-      price: 2.95,
-      sugar: false,
-      cups: 0
-    },
-    americano: {
-      id: 'americano',
-      name: "Americano",
-      price: 2.40,
-      sugar: false,
-      cups: 0
-    }
-  };
