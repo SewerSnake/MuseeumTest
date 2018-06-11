@@ -17,6 +17,9 @@ var Menu = require('./components/menu.jsx');
 var LogoLetter = require('./components/logoletter.jsx')
 var LogoLetter2 = require('./components/logoletter2.jsx')
 
+var Colors = require('./components/colors.jsx')
+var ColorCard = require('./components/colorCard.jsx')
+
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
 
@@ -152,28 +155,32 @@ function fetchsomthing() {
     })
 }
 
-var HashRouter = ReactRouterDOM.HashRouter; var Link = ReactRouterDOM.Link; var Route = ReactRouterDOM.Route; ReactDOM.render(
+var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink; var Route = ReactRouterDOM.Route; ReactDOM.render(
 <Provider store={store}>
   <HashRouter>
     <div>
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <Link exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</Link>
+            <NavLink exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</Link>
+            <NavLink exact to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</Link>
+            <NavLink to="/colors" activeStyle={{borderBottom: "1px solid black"}}>Colors</NavLink>
           </li>
           <li id="navLi">
-            <Link exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</Link>
+            <NavLink exact to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
+          </li>
+          <li id="navLi">
+            <NavLink exact to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
           </li>
         </ul>
       </nav>
       <Route exact={true} component={Home} path="/"   />
       <Route exact={true} component={Art} path="/art"   />
+      <Route exact={true} component={Colors} path="/colors" />
       <Route component={ArtGallery} path="/art/:artistName" />
       <Route exact={true} component={Planner} path="/planner" />
       <Route component={Menu} path="/cafe" />
