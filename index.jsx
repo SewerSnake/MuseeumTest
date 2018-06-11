@@ -99,20 +99,20 @@ ReactDOM.render(
       <nav id="navigation">
         <ul id="navUl">
           <li id="navLi">
-            <NavLink to="/" activestyle={{borderBottom: "1px solid black"}}>Home</NavLink>
+            <NavLink exact to="/" activeStyle={{borderBottom: "1px solid black"}}>Home</NavLink>
           </li>
           <li id="navLi">
-            <NavLink to="/art" activestyle={{borderBottom: "1px solid black"}}>Art</NavLink>
+            <NavLink to="/art" activeStyle={{borderBottom: "1px solid black"}}>Art</NavLink>
           </li>
           <li id="navLi">
-            <NavLink to="/planner" activestyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
+            <NavLink to="/colors" activeStyle={{borderBottom: "1px solid black"}}>Colors</NavLink>
           </li>
           <li id="navLi">
-            <NavLink to="/cafe" activestyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
+            <NavLink to="/planner" activeStyle={{borderBottom: "1px solid black"}}>Planner</NavLink>
           </li>
           <li id="navLi">
--            <NavLink to="/colors" activestyle={{borderBottom: "1px solid black"}}>Colors</NavLink>
-         </li>
+            <NavLink to="/cafe" activeStyle={{borderBottom: "1px solid black"}} onClick={fetchsomthing} >Cafe</NavLink>
+          </li>
         </ul>
       </nav>
       <Route exact={true} component={Home} path="/"   />
