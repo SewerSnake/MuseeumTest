@@ -25,8 +25,8 @@ var destination2 = document.querySelector(".logoS");
 
 var store = Redux.createStore(reducer,
   {
-    menu: {},
-    menuId: 'fullmenu'
+    menu: { suger: false, cups: 0},
+    menuId: 'fullmenu',
   }
 );
 
@@ -70,26 +70,16 @@ function fetchsomthing() {
           .then(result => {
           console.log('POST result', result);
           var object = result.find(o => o.id === MENU_ID);
+          console.log('object:', object);
           store.dispatch({ type: 'SET_MENU', payload: object });
-        });
-      } else {
+        })
+      }  else {
         console.log('Found old menu, resetting');
+        // DELETE EDITED MENU
+        // fetch('http://cities.jonkri.se/'+MENU_ID, {
+        //   method: 'DELETE'
+        // })
         fetch('http://cities.jonkri.se/' + MENU_ID, {
-<<<<<<< HEAD
-          method: 'DELETE'
-        }).then(result => {
-            console.log('Deleted');
-            fetch('http://cities.jonkri.se/', {
-              body: JSON.stringify({cafeMenu, id: MENU_ID}),
-              headers: {'Content-Type': 'application/json' },
-              method: 'POST'})
-              .then(response => response.json())
-              .then(result => {
-                console.log('POST result', result);
-                store.dispatch({ type: 'SET_MENU', payload: cafeMenu })
-              })
-          })
-=======
           body: JSON.stringify({menu, id: MENU_ID}),
           headers: {
             'Content-Type': 'application/json'
@@ -99,9 +89,9 @@ function fetchsomthing() {
           console.log('PUT result', result); //Get ett {menu:, id: }
           store.dispatch({ type: 'SET_MENU', payload: result.cafeMenu })
         })
->>>>>>> b54c39d9cd309584bb159ecf0089873386f03fc5
+
       }
-    });
+    })
 }
 
 var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink; var Route = ReactRouterDOM.Route;
