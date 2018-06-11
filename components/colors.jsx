@@ -8,7 +8,7 @@ function showCard() {
 
   for (var i = 0; i< 25; i++) {
     var ran = Math.floor(Math.random()  * colors.length);
-    randomArray.push(<ColorCard color={colors[ran]} heightColorSqr="100px" width="150px" />);
+    randomArray.push(<ColorCard key={i} color={colors[ran]} heightColorSqr="100px" width="150px" />);
   }
   //return cards
   return randomArray;
