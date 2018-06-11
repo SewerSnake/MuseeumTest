@@ -1,5 +1,4 @@
-function getMenu () {
-  return {
+var originalMenu = {
     espresso: {
       id: 'espresso',
       name: "Espresso",
@@ -57,4 +56,5 @@ function getMenu () {
       cups: 0
     }
   }
-}
+
+  module.exports = originalMenu;

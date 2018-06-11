@@ -18,7 +18,7 @@ var Colors = require('./components/colors.jsx');
 var LogoLetter = require('./components/logoletter.jsx')
 var LogoLetter2 = require('./components/logoletter2.jsx')
 var reducer = require('./reducer.jsx');
-var cafeMenu = require('./cafeMenu.jsx');
+var originalMenu = require('./cafeMenu.jsx');
 
 var destination = document.querySelector(".logo");
 var destination2 = document.querySelector(".logoS");
@@ -58,10 +58,9 @@ function fetchsomthing() {
       var array = result;
       let object = array.find(o => o.id === MENU_ID);
       if (object === undefined) {
-        var menu = cafeMenu.getMenu();
-        console.log('Menu not found, POSTing')
+      console.log('Menu not found, POSTing')
         fetch('http://cities.jonkri.se/', {
-          body: JSON.stringify({ menu, id: MENU_ID}),
+          body: JSON.stringify({ originalMenu, id: MENU_ID}),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -70,26 +69,28 @@ function fetchsomthing() {
           .then(result => {
           console.log('POST result', result);
           var object = result.find(o => o.id === MENU_ID);
-          console.log('object:', object);
-          store.dispatch({ type: 'SET_MENU', payload: object });
-        })
-      }  else {
+          store.dispatch({ type: 'SET_MENU', payload: object.originalMenu });
+        });
+      } else {
         console.log('Found old menu, resetting');
         // DELETE EDITED MENU
         // fetch('http://cities.jonkri.se/'+MENU_ID, {
         //   method: 'DELETE'
         // })
         fetch('http://cities.jonkri.se/' + MENU_ID, {
-          body: JSON.stringify({menu, id: MENU_ID}),
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'PUT'})
-        .then(response => response.json()).then(result => {
-          console.log('PUT result', result); //Get ett {menu:, id: }
-          store.dispatch({ type: 'SET_MENU', payload: result.cafeMenu })
-        })
-
+          method: 'DELETE'
+        }).then(result => {
+            console.log('Deleted');
+            fetch('http://cities.jonkri.se/', {
+              body: JSON.stringify({ originalMenu, id: MENU_ID }),
+              headers: {'Content-Type': 'application/json' },
+              method: 'POST'})
+              .then(response => response.json())
+              .then(result => {
+                var object = result.find(o => o.id === MENU_ID);
+                store.dispatch({ type: 'SET_MENU', payload: object.originalMenu })
+              })
+          })
       }
     })
 }
