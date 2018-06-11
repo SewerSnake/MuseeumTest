@@ -30,7 +30,8 @@ class MenuLabel extends React.Component {
 }
 
 var ConnectedMenuLabel = ReactRedux.connect(
-  (state) => { ({ sugar: state.sugar, cups: state.cups })
+  function(state) {
+    return { sugar: state.sugar, cups: state.cups };
   },
   (dispatch) => {
     return {
