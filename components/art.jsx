@@ -8,11 +8,10 @@ var Link = ReactRouterDOM.Link;
 class Art extends React.Component {
   render() {
       var artists = [['rembrandt','Rembrandt'],['monet','Claude Monet'],
-      ['vermeer','Johannes Vermeer'],['rachelRuysch','Rachel Ruysch'],['edgardegas','Edgar Degas'],
-      ['jozefIsraels','Josef Israëls'],['vangogh','Vincent van Gogh'],
-      ['michelangelo','Michelangelo The Incredible'],['davinci','Lenardo da Vinci'],['picasso','Pablo Picasso'],
-      ['AdriaenCoorte','Adriaen Coorte'],['WillemClaesz','Willem Claesz'],
-      ['FlorisClaesz','Floris Claesz']]
+      ['vermeer','Johannes Vermeer'],['ruysch','Rachel Ruysch'],['degas','Edgar Degas'],
+      ['israëls','Josef Israëls'],['vangogh','Vincent van Gogh'],['davinci','Lenardo da Vinci'],['picasso','Pablo Picasso'],
+      ['coorte','Adriaen Coorte'],['claesz','Willem Claesz'],
+      ['f-claesz','Floris Claesz']]
 
 
     var renderValues = artists.map(value => {
@@ -29,7 +28,7 @@ class Art extends React.Component {
     })
 
       return <section id="artList" >
-      <h1>Artists</h1>
+      <h2 className="content-title">Artists</h2>
       <div>{renderValues}</div>
       </section>
   }

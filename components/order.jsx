@@ -9,12 +9,12 @@ class Order extends React.Component{
   render() {
     var drinksOrdered = Object.values(this.props.menu).filter((drink) => drink.cups > 0);
     var total = drinksOrdered.reduce((total, drink) => total + (drink.price*drink.cups), 0);
-    return <div><table>
+    return <div id="placeOrder"><table>
       <tbody>
         <tr>
           <th>YOUR CURRENT ORDER</th>
           <th>TOTAL: { total.toFixed(2) } euros</th>
-          <th><input id="placeOrder" type='button' onClick={this.props.placeOrder} value="Place Order" />
+          <th><input type='button' onClick={this.props.placeOrder} value="Place Order" />
           </th>
         </tr>
         <tr><th>Drink</th><th>Sugar</th><th>Amount</th></tr>

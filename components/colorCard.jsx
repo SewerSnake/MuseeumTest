@@ -12,7 +12,7 @@ class ColorCard extends React.Component {
       width: this.props.width,
       padding: 0,
       backgroundColor:"FFF",
-      boxShadow: "0px 0px 1px #DCDCDC"
+      boxShadow: "0px 0px 0px #DCDCDC"
     };
     return (
       <div style={cardStyle}>

@@ -97,7 +97,7 @@ var HashRouter = ReactRouterDOM.HashRouter; var NavLink = ReactRouterDOM.NavLink
 ReactDOM.render(
   <Provider store={store}>
   <HashRouter>
-    <div>
+    <div id="navDiv">
       {/*<MyFancyReduxConnectedNavigation />  Kopplas till state*/}
       <nav id="navigation">
         <ul id="navUl">
@@ -118,12 +118,14 @@ ReactDOM.render(
           </li>
         </ul>
       </nav>
+      <section id="box2-content">
       <Route exact={true} component={Home} path="/"   />
       <Route exact={true} component={Art} path="/art"   />
       <Route exact={true} component={Colors} path="/colors" />
       <Route component={ArtGallery} path="/art/:artistName" />
       <Route exact={true} component={Planner} path="/planner" />
       <Route component={Menu} path="/cafe" />
+      </section>
     </div>
   </HashRouter>
 </Provider>, document.getElementById('box2'));

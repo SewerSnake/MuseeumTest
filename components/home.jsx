@@ -6,7 +6,6 @@ class Home extends React.Component {
       return <section id="section-a">
                 <div className="content-wrap">
                   <h2 className="content-title">Art & web technology</h2>
-                  <p>Built with:</p>
                     <div id="builtWithCards">
                       <Card
                         heightSqr="100px"
@@ -21,7 +20,7 @@ class Home extends React.Component {
                         colorLbl="#FFC983"
                         heightLbl="20px"
                         name="Redux"
-                        image={'media/redux.png'}/>  
+                        image={'media/redux.png'}/>
                       <Card
                         heightSqr="100px"
                         color="lightgrey"

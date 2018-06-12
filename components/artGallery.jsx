@@ -30,15 +30,12 @@ class ArtGallery extends React.Component {
     var artArr = [];
 
     console.log(this.props.match.params.artistName)
-    if (artistName == 'AdriaenCoorte') {
-      artistName = 'coorte';
-    }
 
-    if (artistName == 'WillemClaesz') {
+    if (artistName == 'claesz') {
       artistName = 'willem%20claesz';
     }
 
-    if (artistName == 'FlorisClaesz') {
+    if (artistName == 'f-claesz') {
       artistName = 'floris%20claesz';
     }
 
@@ -46,12 +43,18 @@ class ArtGallery extends React.Component {
       artistName = 'vincent%20van%20gogh';
     }
 
-    if (artistName == 'rachelRuysch') {
+    if (artistName == 'ruysch') {
       artistName = 'rachel%20ruysch';
     }
 
-    if (artistName == 'jozefIsraels') {
+    if (artistName == 'israëls') {
       artistName = 'jozef%20israels'
+    }
+    if (artistName == 'degas') {
+      artistName = 'edgar%20degas'
+    }
+    if (artistName == 'davinci') {
+      artistName = 'leonardo%20da%20vinci'
     }
 
     fetch("https://www.rijksmuseum.nl/api/en/collection?key=OTlO83oj&format=json&q="
@@ -84,7 +87,7 @@ class ArtGallery extends React.Component {
       return <p><strong>Could not find what you seek</strong></p>
     } else {
 
-      return <div id="artistArtGallery">{
+      return <div id="artistArtGallery"><h2 className="content-title">{this.props.match.params.artistName.toUpperCase()}</h2>{
         this.state.artArray.map(function(value, index) {
           return <div key={index}>
             {createImage(value.webImage)}

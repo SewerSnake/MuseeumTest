@@ -50,10 +50,17 @@ body {
   overflow-y: scroll;
 }
 
+#box2-content {
+  margin-top: 40px;
+}
+
 /* nav */
 #navigation {
   background-color: #f5ab31;
   padding: 4px 4px 4px 8px;
+}
+#navDiv {
+  margin-top: 0px;
 }
 #navUl {
   text-decoration: none;
@@ -116,6 +123,9 @@ body {
 #section-a {
   padding: 0px 0px 0px 50px;
 }
+.content-title {
+  margin-bottom: 30px;
+}
 
 /* ART pages */
 #artList {
@@ -124,7 +134,7 @@ body {
 
 #artistArtGallery {
   /* height: 200px; */
-  padding: 0px 0px 0px 50px;
+  padding: 0px 50px 0px 50px;
   /* overflow-y: scroll; */
 }
 
@@ -159,7 +169,7 @@ tr:hover {background-color:#FFEACF;}
 @media (min-width: 500px) {
   .palette-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
   }
   #colorinput {
     border: none;
@@ -214,6 +224,20 @@ tr:hover {background-color:#FFEACF;}
   .button1:hover {
     background-color: #f5ab31;
     color: white;
+  }
+  #section-b {
+    margin: 0px 0px 0px 50px;
+  }
+  #colorwall {
+    margin-top: 40px;
+  }
+  #picker-value span{
+  }
+
+  /* Cafe */
+  #placeOrder {
+    margin: 0 50px 0 0;
+    padding-bottom: 120px;
   }
 
 /* Notes */

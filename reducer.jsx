@@ -7,7 +7,7 @@ var reducer = function(state, action) {
     case 'SET_MENU':
       console.log('SETMENU, payload: ', action.payload);
       return {
-        menu: action.payload
+        menu: action.payload, mycolor: state.mycolor
       };
     case 'PLACE_ORDER':
       fetch('http://cities.jonkri.se/'+MENU_ID, {
@@ -22,7 +22,7 @@ var reducer = function(state, action) {
       //    store.dispatch({ payload: result, type: 'UPDATE_DRINK' });
         })
       return {
-        menu: state.menu
+        menu: state.menu, mycolor: state.mycolor
       };
     case 'ADD_CUPS':
       var newMenu1 = Object.assign({}, state.menu, {
@@ -30,14 +30,14 @@ var reducer = function(state, action) {
           cups: action.payload })
       })
       return {
-        menu: newMenu1
+        menu: newMenu1, mycolor: state.mycolor
       };
     case 'CHANGE_SUGAR':
       var newMenu = Object.assign({}, state.menu, {
         [action.item]: Object.assign({}, state.menu[action.item], { sugar: action.payload})
       })
       return {
-        menu: newMenu
+        menu: newMenu, mycolor: state.mycolor
       };
     //TEST MILJA START
     case 'SAVE_COLOR':

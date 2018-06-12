@@ -10,9 +10,8 @@ var Order = require('./order.jsx');
 var MENU_ID = 'fullmenu';
 class Menu extends React.Component {
   render() {
-    return <div>
-      <h1>Welcome to the Museum Cafe</h1><br />
-      <p>Nothing better than a cup of coffee after fine art. Place your order here and pick it up at the museum café after your tour.</p><br />
+    return <div id="section-a">
+      <h2 className="content-title">Welcome to the Museum Cafe</h2>
       {Object.values(this.props.menu).map((item, index) => {
       return <MenuCard key={index} color="lightgrey" colorL="#FFFFFF" item={item} name={item.name} image={item.id} />
       })}<br /><br />
