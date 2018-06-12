@@ -1,6 +1,7 @@
 var React = require('react')
 var ReactRedux = require('react-redux');
 var ColorCard = require('./colorCard.jsx')
+var ColorInputCard = require('./colorInputCard.jsx');
 var destination = document.querySelector("#container");
 
 function showCard() {
@@ -21,7 +22,7 @@ constructor(props) {
   super(props)
   this.state = {
     cardList: showCard(),
-    pickerValue: 'black'
+    pickerValue: 'white'
   };
   this.shuffle = this.shuffle.bind(this)
 }
@@ -37,19 +38,20 @@ shuffle() {
     return <section id="section-b">
       <div className="palette-wrapper">
           <div className="console">
-            <button className="button button1" onClick={this.shuffle} >Reload</button>
+            <button className="button button1" onClick={this.shuffle} >Colorize</button>
           </div>
           <div id="chosen-colors" style={{ display: 'flex' }}>
             <div>
             <div className="input-color-container">
               <input id="input-color" className="input-color" type="color" thange={console.log("changeColor")} style={{ display: 'block' }}></input>
               </div>
-              <div id="">buuu</div>
+              <div id="">hex</div>
               </div>
-            <ColorCard color={this.props.c ? this.props.c[0] : '#000000'} heightColorSqr='40px'/>
-            <ColorCard color={this.props.c ? this.props.c[1] : '#000000'} heightColorSqr='40px'/>
-            <ColorCard color={this.props.c ? this.props.c[2] : '#000000'} heightColorSqr='40px'/>
-            <ColorCard color={this.props.c ? this.props.c[3] : '#000000'} heightColorSqr='40px'/>
+            <ColorCard color={this.props.c ? this.props.c[0] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[1] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[2] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[3] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
+            <ColorInputCard />
           </div>
         </div>
       <div id="colorwall">

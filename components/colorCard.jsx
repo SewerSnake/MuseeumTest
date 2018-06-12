@@ -18,6 +18,7 @@ class ColorCard extends React.Component {
       <div style={cardStyle}>
         <ColorSquare color={this.props.color}
         heightColorSqr={this.props.heightColorSqr}
+        borderRadius={this.props.borderRadius}
         onClick={(event) => this.props.saveColor(event, this.props.color)}/>
         <ColorLabel color={this.props.color}/>
       </div>
