@@ -4,6 +4,7 @@ class ColorSquare extends React.Component {
   render() {
     var squareStyle = {
       height: this.props.heightColorSqr,
+      width: this.props.widthColorSqr,
       borderRadius: this.props.borderRadius,
       backgroundColor: this.props.color
     };

@@ -47,10 +47,10 @@ shuffle() {
               </div>
               <div id="">hex</div>
               </div>
-            <ColorCard color={this.props.c ? this.props.c[0] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
-            <ColorCard color={this.props.c ? this.props.c[1] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
-            <ColorCard color={this.props.c ? this.props.c[2] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
-            <ColorCard color={this.props.c ? this.props.c[3] : '#FFF'} heightColorSqr='40px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[0] : '#FFF'} heightColorSqr='50px' widthColorSqr='50px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[1] : '#FFF'} heightColorSqr='50px' widthColorSqr='50px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[2] : '#FFF'} heightColorSqr='50px' widthColorSqr='50px' borderRadius='8px'/>
+            <ColorCard color={this.props.c ? this.props.c[3] : '#FFF'} heightColorSqr='50px' widthColorSqr='50px' borderRadius='8px'/>
             <ColorInputCard />
           </div>
         </div>

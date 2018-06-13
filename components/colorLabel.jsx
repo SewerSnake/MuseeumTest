@@ -4,7 +4,7 @@ class ColorLabel extends React.Component {
   render() {
     var labelStyle = {
       fontFamily: "sans-serif",
-      fontSize: 'x-small',
+      fontSize: 'xx-small',
       height: this.props.heightColorLbl,
       padding: 6,
       margin: 0,
